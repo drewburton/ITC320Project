@@ -1,25 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>To-Do List</title>
-	<link rel="stylesheet" href="to_do_list.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Splash Screen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #124772;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header ul {
+            list-style: none;
+            
+            display: flex;
+            justify-content: right;
+            align-items: right;
+            padding: 0;
+            margin: 0;
+        }
+
+        header a {
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3734db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            opacity: 0; /* Initially set to be invisible */
+            transition: opacity 1s ease-in-out; /* Add a smooth fade-in effect */
+        }
+        .splash-screen{
+            top: 0;
+            bottom: 0;
+           display: flex;
+
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            z-index: 200;
+            color: white;
+            text-align: center;
+            line-height: 90vh;
+          
+
+        }
+       
+        .splash-screen.display-none{
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+            z-index: -10;
+            color: white;
+            text-align: center;
+            line-height: 90vh;
+        }
+        @keyframes fadeIn {
+            to{
+                opacity: 1;
+            }
+        }
+        .fade-in{
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
-	<main>
-		<a href="about.html"><button type="button">About</button></a>
-		<a href="calendar.html"><button type="button">Calendar</button></a>
-		<a href="config.html"><button type="button">Config</button></a>
-		<a href="confirmation.html"><button type="button">Confirmation</button></a>
-		<a href="credits.html"><button type="button">Credits</button></a>
-		<a href="login.html"><button type="button">Login</button></a>
-		<a href="registration.html"><button type="button">Registration</button></a>
-		<a href="wakeup.html"><button type="button">Events</button></a>
-	</main>
-	<script src="login.js"></script>
+   
+    
+    
+    <header>
+       
+        <!-- <img src="logo.png" alt="Logo">  Logo image -->
+        <ul>
+            <a href="about.html"><button type="button">About</button></a>
+            <a href="calendar.html"><button type="button">Calendar</button></a>
+            <a href="config.html"><button type="button">Config</button></a>
+            <a href="confirmation.html"><button type="button">Confirmation</button></a>
+            <a href="credits.html"><button type="button">Credits</button></a>
+            <a href="login.html"><button type="button">Login</button></a>
+            <a href="registration.html"><button type="button">Registration</button></a>
+            <a href="wakeup.html"><button type="button">Events</button></a>
+        </ul>
+    </header>
+    <div class="splash-screen">
+        <h1 class = "fade-in"> Welcome </h1>    
+    </div>
+
+   
+    <script>
+        const splash = document.querySelector('.splash-screen');
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            setTimeout(() => {
+                splash.classList.add('display-none');
+            }, 2000);
+        });
+
+        const header = document.querySelector('header');
+
+        window.onscroll = function () {
+            var top = window.scrollY;
+            if (top >= 50) {
+                header.classList.add('active');
+            } else {
+                header.classList.remove('active');
+            }
+        }
+
+        // Add an event listener for the end of the animation
+        const fadeInElement = document.querySelector('.fade-in');
+        fadeInElement.addEventListener('animationend', () => {
+            splash.classList.add('display-none');
+        });
+
+    </script>
+
 </body>
 
 </html>
