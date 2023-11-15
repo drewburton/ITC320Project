@@ -2,6 +2,7 @@ form {
 	display: flex;
 	flex-direction: column;
 	width: 200px;
+	padding-top: 1em;
 }
 
 form input {
@@ -40,4 +41,38 @@ form button {
 
 .dropdown:hover .dropdown-content {
 	display: block;
+}
+
+header {
+	background-color: #124772;
+	color: white;
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+}
+
+h1 {
+	margin: 0px;
+	float: left;
+	padding: 0.3em;
+}
+
+header button {
+	color: white;
+	background: none;
+	border: none;
+	text-decoration: none;
+	padding: 1.5em 2em;
+	float: right;
+}
+
+#events {
+	color: lightblue;
+	border-bottom: 3px solid lightblue;
+}
+
+header button:hover {
+	background-color: #2494b9;
 }
