@@ -6,12 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
-    <!-- <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./loginRegistration.css">
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
   </head>
   <body>
     <main>
-        <h1>Login</h1>  
+        <button onclick="location.href='./index.html'">Back</button>
+        <h1 id="pageHeader">Login</h1>
+
+        <form id="loginForm">  
+            <p>
+                <label id="loginUsername" for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </p>
+
+            <p>
+                <label id="loginPassword" for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </p>
+        </form>
+
+        <div id="submitForm">
+            <input type="submit" form="loginForm" value="Login">
+        </div>
+        
     </main>
 	<!-- <script src="index.js"></script> -->
   </body>
