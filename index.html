@@ -1,77 +1,100 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
-    <style>
-        /* Splash screen styles */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Website Title</title>
+        <style>
+            /* Splash screen styles */
+            body {
+                margin: 0;
+                font-family: 'Arial', sans-serif;
+                background-color: #f0f0f0;
+                align-items: center;
+            text-align: center;
+            }
 
-        .splash-screen {
+            .splash-screen {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                overflow: hidden;
+                text-align: center;
+                color: #40c9ff; /* Font color */
+                background-color: #124772; /* Background color */
+                /* max-height: initial; */
+            }
+            header {
+                background: rgb(100, 100, 100);
+                color: white;
+                padding: 25px;
+                text-align: center;
+            }
+
+            header img {
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            header ul {
+                list-style: none;
+                display: flex;
+                justify-content: flex-end;
+                padding: 0;
+                margin: 0;
+            }
+
+            header ul a {
+                text-decoration: none;
+                color: #fff;
+                margin: 0 10px;
+            }
+
+            header button {
+                background-color:rgb(100, 100, 100); 
+                color: #eee; /* Light grey text */
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                border-radius: 10px;
+            }
+
+            header button:hover {
+                background-color: #555; /* Slightly darker grey on hover */
+            }   
+            .Images {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden;
             text-align: center;
-            color: #40c9ff; /* Font color */
-            background-color: #124772; /* Background color */
-}
-
-        
-        header {
-            background-color: #124772;
-            color: white;
-            padding: 10px;
-            text-align: center;
+            margin-top: 50px; /* Adjust the margin as needed */
         }
 
-        header img {
-            height: 40px;
-            margin-right: 10px;
+        /* Optional: Add some styling to the h2 and image */
+        h2 {
+            color: #333;
         }
 
-        header ul {
-            list-style: none;
-            display: flex;
-            justify-content: right;
-            align-items: right;
-            padding: 0;
-            margin: 0;
+        img {
+            max-width: 40%;
+            max-height: 40%;
+            /*border: 2px solid #333;
+             border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+            margin-top: 20px; /* Adjust the margin as needed */
         }
-        header ul a {
-            text-decoration: none;
-            color: #fff;
-            margin: 0 10px;
-        }
+        </style>
+        <!-- Splash Screen -->
+        <div class="splash-screen" id="splashScreen">
+            <h1 id="splashText"></h1>
+        </div>
 
-        header button {
-            background-color: #555;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Splash Screen -->
-    <div class="splash-screen" id="splashScreen">
-        <h1 id="splashText"></h1>
-    </div>
-
-    <!-- Header -->
+    </head>
     <header id="main-header">
-        <!-- Add your logo image if needed -->
-        <!-- <img src="logo.png" alt="Logo"> -->
-        
+            
         <ul>
             <a href="about.html"><button type="button">About</button></a>
             <a href="calendar.html"><button type="button">Calendar</button></a>
@@ -83,48 +106,62 @@
             <a href="wakeup.html"><button type="button">Events</button></a>
         </ul>
     </header>
+    <body>
 
-    <script>
-       
-        document.addEventListener('DOMContentLoaded', function() {
-            const splashText = document.getElementById('splashText');
-            const splashScreen = document.getElementById('splashScreen');
-            const header = document.getElementById('main-header');
+        
+        <!-- Header -->
+        <div id = "Images"> 
+            <h2>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h2>
+            <img src="calender 1.jpg" alt="Capture.PNG">
+            <h2>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h2>
+            <img src="Capture.PNG" alt="calender1">
+        </div>
 
-            const messages = [
-                'Welcome to Your Website\n',
-                'Discover Exciting Events\n',
-                'Explore the Calendar\n',
-                'Connect with Us'
-               
-            ];
-
-            let index = 0;
-
-            function updateSplashText() {
-                splashText.textContent += messages[index];
-                index = (index + 1) % messages.length;
-            }
-
-            function showHeader() {
-                splashScreen.style.display = 'none';
-                header.style.display = 'block';
-            }
-
-            // Initial update
-            updateSplashText();
-
-            // Interval to update text every 1500 milliseconds (1.5 seconds)
-            const textInterval = setInterval(updateSplashText, 1000);
-
-            // Show header after a certain time (adjust as needed)
-            setTimeout(function() {
-                clearInterval(textInterval);
-                showHeader();
-            }, 4000); // Adjust the time (in milliseconds) as needed
-        });
-        splashText.style.whiteSpace = 'pre-line';
-    </script>
-
-</body>
+    </body>
 </html>
+
+
+
+
+
+
+<script>
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const splashText = document.getElementById('splashText');
+        const splashScreen = document.getElementById('splashScreen');
+        const header = document.getElementById('main-header');
+
+        const messages = [
+            'Welcome to Your Website\n',
+            'Discover Exciting Events\n',
+            'Explore the Calendar\n',
+            'Connect with Us'   
+        ];
+
+        let index = 0;
+
+        function updateSplashText() {
+            splashText.textContent += messages[index];
+            index = (index + 1) % messages.length;
+        }
+
+        function showHeader() {
+            splashScreen.style.display = 'none';
+                header.style.display = 'block';
+        }
+
+        // Initial update
+        updateSplashText();
+
+        // Interval to update text every 1500 milliseconds (1.5 seconds)
+        const textInterval = setInterval(updateSplashText, 1000);
+
+        // Show header after a certain time (adjust as needed)
+        setTimeout(function() {
+            clearInterval(textInterval);
+            showHeader();
+        }, 4000); // Adjust the time (in milliseconds) as needed
+    });
+    splashText.style.whiteSpace = 'pre-line';
+</script>
