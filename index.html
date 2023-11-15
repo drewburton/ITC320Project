@@ -1,18 +1,30 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Splash Screen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
     <style>
+        /* Splash screen styles */
         body {
             margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
         }
 
+        .splash-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            color: #40c9ff; /* Font color */
+            background-color: #124772; /* Background color */
+}
+
+        
         header {
             background-color: #124772;
             color: white;
@@ -27,89 +39,39 @@
 
         header ul {
             list-style: none;
-            
             display: flex;
             justify-content: right;
             align-items: right;
             padding: 0;
             margin: 0;
         }
-
-        header a {
+        header ul a {
             text-decoration: none;
+            color: #fff;
             margin: 0 10px;
         }
 
-        button {
-            padding: 10px 20px;
-            background-color: #3734db;
+        header button {
+            background-color: #555;
             color: #fff;
             border: none;
-            border-radius: 4px;
+            padding: 10px 20px;
             cursor: pointer;
-            font-size: 12px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            opacity: 0; /* Initially set to be invisible */
-            transition: opacity 1s ease-in-out; /* Add a smooth fade-in effect */
-        }
-        .splash-screen{
-            top: 0;
-            bottom: 0;
-           display: flex;
-
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            z-index: 200;
-            color: white;
-            text-align: center;
-            line-height: 90vh;
-          
-
-        }
-       
-        .splash-screen.display-none{
-            top: 0;
-            bottom: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: black;
-            z-index: -10;
-            color: white;
-            text-align: center;
-            line-height: 90vh;
-        }
-        @keyframes fadeIn {
-            to{
-                opacity: 1;
-            }
-        }
-        .fade-in{
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out;
         }
     </style>
 </head>
-
 <body>
-   
-    
-    
-    <header>
-       
-        <!-- <img src="logo.png" alt="Logo">  Logo image -->
+
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <h1 id="splashText"></h1>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <!-- Add your logo image if needed -->
+        <!-- <img src="logo.png" alt="Logo"> -->
+        
         <ul>
             <a href="about.html"><button type="button">About</button></a>
             <a href="calendar.html"><button type="button">Calendar</button></a>
@@ -121,39 +83,48 @@
             <a href="wakeup.html"><button type="button">Events</button></a>
         </ul>
     </header>
-    <div class="splash-screen">
-        <h1 class = "fade-in"> Welcome </h1>    
-    </div>
 
-   
     <script>
-        const splash = document.querySelector('.splash-screen');
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            const splashText = document.getElementById('splashText');
+            const splashScreen = document.getElementById('splashScreen');
+            const header = document.getElementById('main-header');
 
-        document.addEventListener('DOMContentLoaded', (e) => {
-            setTimeout(() => {
-                splash.classList.add('display-none');
-            }, 2000);
-        });
+            const messages = [
+                'Welcome to Your Website\n',
+                'Discover Exciting Events\n',
+                'Explore the Calendar\n',
+                'Connect with Us'
+               
+            ];
 
-        const header = document.querySelector('header');
+            let index = 0;
 
-        window.onscroll = function () {
-            var top = window.scrollY;
-            if (top >= 50) {
-                header.classList.add('active');
-            } else {
-                header.classList.remove('active');
+            function updateSplashText() {
+                splashText.textContent += messages[index];
+                index = (index + 1) % messages.length;
             }
-        }
 
-        // Add an event listener for the end of the animation
-        const fadeInElement = document.querySelector('.fade-in');
-        fadeInElement.addEventListener('animationend', () => {
-            splash.classList.add('display-none');
+            function showHeader() {
+                splashScreen.style.display = 'none';
+                header.style.display = 'block';
+            }
+
+            // Initial update
+            updateSplashText();
+
+            // Interval to update text every 1500 milliseconds (1.5 seconds)
+            const textInterval = setInterval(updateSplashText, 1000);
+
+            // Show header after a certain time (adjust as needed)
+            setTimeout(function() {
+                clearInterval(textInterval);
+                showHeader();
+            }, 4000); // Adjust the time (in milliseconds) as needed
         });
-
+        splashText.style.whiteSpace = 'pre-line';
     </script>
 
 </body>
-
 </html>

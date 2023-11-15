@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="config.css">
+</head>
+
+<body>
+	<main>
+		<h1>Add Events</h1>
+
+		<nav>
+			<button id="home">Home</button>
+			<button id="calendar">Calendar</button>
+			<button id="events">Add Events</button>
+			<button id="about">About</button>
+		</nav>
+
+		<form>
+			<label for="date">Date</label>
+			<input type="date" id="date">
+			<span></span>
+
+			<label for="start">Start Time</label>
+			<input type="time" id="start">
+			<span></span>
+
+			<label for="duration">Duration</label>
+			<input type="text" id="duration">
+			<span></span>
+
+			<button id="submit" type="submit">Submit</button>
+			<span id="confirmation"></span>
+		</form>
+
+		<div>
+			<h2>Events</h2>
+			<button id="display">Display</button>
+			<div class="dropdown">
+				<button class="dropbtn">Sort by</button>
+				<div class="dropdown-content">
+					<a href="#" id="date-sort">Date</a>
+					<a href="#" id="start-sort">Start Time</a>
+					<a href="#" id="duration-sort">Duration</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="config.js"></script>
+</body>
+
+</html>
