@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Your Website Title</title>
         <style>
-            /* Splash screen styles */
+            
             body {
                 margin: 0;
                 font-family: 'Arial', sans-serif;
                 background-color: #f0f0f0;
                 align-items: center;
-            text-align: center;
+                text-align: center;
             }
 
             .splash-screen {
@@ -22,15 +22,16 @@
                 height: 100vh;
                 overflow: hidden;
                 text-align: center;
-                color: #40c9ff; /* Font color */
-                background-color: #124772; /* Background color */
-                /* max-height: initial; */
-            }
+                color: #40c9ff; 
+                background-color: #124772; 
+                           }
             header {
-                background: rgb(100, 100, 100);
+                background: rgb(163, 162, 162);
                 color: white;
-                padding: 25px;
+                padding: 15px;
                 text-align: center;
+                position: fixed;
+                width: 100%;
             }
 
             header img {
@@ -53,44 +54,57 @@
             }
 
             header button {
-                background-color:rgb(100, 100, 100); 
-                color: #eee; /* Light grey text */
+                background-color:rgb(163, 162, 162); 
+                color: #eee; 
                 border: none;
-                padding: 10px 20px;
+                padding: 10px 10px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
                 border-radius: 10px;
+                padding-inline-end: 1cm;
+                text-align: center;
             }
 
             header button:hover {
-                background-color: #555; /* Slightly darker grey on hover */
-            }   
-            .Images {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: 50px; /* Adjust the margin as needed */
-        }
+                background-color: #555; 
+            }    
+            #ImageContainer {
+                display: flex;
+                justify-content: flex-start; /* Align items to the left */
+                align-items: center;
+                height: 200vh;
+                padding-top: 0;
+                padding-left: 2cm;
 
-        /* Optional: Add some styling to the h2 and image */
-        h2 {
-            color: #333;
-        }
+            }
+
+            #ImageContainer img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+                        
+            h2 {
+                color: #333;
+            }
+            body h1 {
+                padding: 1cm;
+                color: #6b6b6b;
+            }
 
         img {
             max-width: 40%;
             max-height: 40%;
-            /*border: 2px solid #333;
+            margin-top: 20px;
+            /* border: 2px solid #333;
              border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-            margin-top: 20px; /* Adjust the margin as needed */
+             
         }
         </style>
         <!-- Splash Screen -->
-        <div class="splash-screen" id="splashScreen">
-            <h1 id="splashText"></h1>
-        </div>
+       
 
     </head>
     <header id="main-header">
@@ -106,24 +120,20 @@
             <a href="wakeup.html"><button type="button">Events</button></a>
         </ul>
     </header>
+    <div class="splash-screen" id="splashScreen">
+        <h1 id="splashText"></h1>
+    </div>
     <body>
 
-        
+        <h1>Get Started</h1>
         <!-- Header -->
-        <div id = "Images"> 
-            <h2>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h2>
-            <img src="calender 1.jpg" alt="Capture.PNG">
-            <h2>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h2>
-            <img src="Capture.PNG" alt="calender1">
+        <div id = "ImageContainer"> 
+            <img src="PIC1.jfif" alt="Calender">
+            
         </div>
 
     </body>
 </html>
-
-
-
-
-
 
 <script>
         
@@ -146,22 +156,16 @@
             index = (index + 1) % messages.length;
         }
 
-        function showHeader() {
-            splashScreen.style.display = 'none';
-                header.style.display = 'block';
-        }
-
         // Initial update
         updateSplashText();
 
-        // Interval to update text every 1500 milliseconds (1.5 seconds)
         const textInterval = setInterval(updateSplashText, 1000);
 
-        // Show header after a certain time (adjust as needed)
+        // Show header after a certain time 
         setTimeout(function() {
             clearInterval(textInterval);
-            showHeader();
-        }, 4000); // Adjust the time (in milliseconds) as needed
+          
+        }, 3500); 
     });
     splashText.style.whiteSpace = 'pre-line';
 </script>
