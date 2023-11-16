@@ -1,7 +1,17 @@
 "use strict";
 
+var sortType = "date";
+var shouldDisplayEvents = false;
+
 const submitForm = evt => {
 	let valid = true;
+
+	// validate title
+	let title = $("#title").val();
+	if (!title) {
+		valid = false;
+		$("#title").next("span").text("Please enter a title");
+	}
 
 	// validate date
 	let date = $("#date").val().split("-");
@@ -40,12 +50,13 @@ const submitForm = evt => {
 	} else {
 		// create event object
 		let event = {
+			user: user,
+			title: title,
 			date: date,
 			startHours: hours,
 			startMinutes: minutes,
 			duration: duration
 		};
-		console.log(event);
 
 		// add to web storage
 		let existingEvents = JSON.parse(localStorage.getItem("events")) || [];
@@ -54,16 +65,22 @@ const submitForm = evt => {
 		localStorage.events = jsonString;
 
 		// clear fields, display confirmation message,
-		// and focus on date input
+		// and focus on first input
+		$("#title").val("");
 		$("#date").val("");
 		$("#start").val("");
 		$("#duration").val("");
 		$("form span").text("");
 
-		$("#date").focus();
+		$("#title").next("span").text("");
+		$("#date").next("span").text("");
+		$("#start").next("span").text("");
+		$("#duration").next("span").text("");
+
+		$("#title").focus();
 
 		$("#confirmation").text("Your event has been successfully added");
-		setTimeout(() => $("#confirmation").text(""), 5000);
+		setTimeout(() => $("#confirmation").text(""), 3000);
 
 		evt.preventDefault();
 	}
@@ -71,16 +88,127 @@ const submitForm = evt => {
 
 const displayEvents = () => {
 	// read from web storage
+	let user = sessionStorage.currentUser || "admin";
+	if (!user) {
+		alert("You must be logged in to view events");
+		return;
+	}
 
-	// if no events display, no events to display
+	// if no events display, display there are no events
+	if (!localStorage.events) {
+		let span = document.createElement('span');
+		$(span).text("No events to display");
+		$("ol").append(span);
+		return;
+	}
+
+	let events = JSON.parse(localStorage.events).filter(event => event.user === user) || [];
+	events.map(event => event.date = new Date(event.date));
 
 	// sort the elements by sort type
+	switch (sortType) {
+		case "date":
+			events.sort((e1, e2) => {
+				if (e1.date > e2.date)
+					return 1;
+				else if (e1.date < e2.date)
+					return -1;
+				return 0;
+			});
+			break;
+		case "start":
+			events.sort((e1, e2) => {
+				if (e1.startHours > e2.startHours)
+					return 1;
+				else if (e1.startHours < e2.startHours)
+					return -1;
+				else if (e1.startMinutes > e2.startMinutes)
+					return 1;
+				else if (e1.startMinutes < e2.startMinutes)
+					return -1;
+				return 0;
+			});
+			break;
+		case "duration":
+			events.sort((e1, e2) => {
+				if (e1.duration > e2.duration)
+					return 1;
+				else if (e1.duration < e2.duration)
+					return -1;
+				return 0;
+			})
+			break;
+		default:
+			throw new Error("invalid sort type");
+	}
 
 	// display in a list (remove any duplicates from web storage while doing this) 
+	for (let i = 0; i < events.length; i++) {
+		let entry = document.createElement('li');
+
+		let title = document.createElement('span');
+		$(title).text(events[i].title);
+		$(title).css({
+			'font-size': '1.2em',
+		});
+
+		let date = document.createElement('span');
+		$(date).text("Date: " + events[i].date.toDateString());
+
+		let startTime = document.createElement('span');
+		let hours = events[i].startHours;
+		let am = "AM"
+		if (hours > 12) {
+			am = "PM";
+			hours -= 12;
+		}
+		let minutes = events[i].startMinutes.toString().padStart(2, 0);
+		$(startTime).text("Time: " + hours + ":" + minutes + " " + am);
+
+		let duration = document.createElement('span');
+		$(duration).text("Duration: " + events[i].duration + " minutes");
+
+		entry.appendChild(title);
+		entry.appendChild(date);
+		entry.appendChild(startTime);
+		entry.appendChild(duration);
+
+		$("ol").append(entry);
+	}
 };
 
-const sortEvents = type => {
-	// set global sort type and display events
+const hideEvents = () => {
+	$("#display").text("Display");
+	$("ol").empty();
+}
+
+const toggleEvents = () => {
+	if (shouldDisplayEvents) {
+		hideEvents();
+	} else {
+		$("#display").text("Hide");
+		displayEvents();
+	}
+	shouldDisplayEvents = !shouldDisplayEvents;
+}
+
+const sortEvents = evt => {
+	// set global sort type and hide events
+	sortType = evt.target.id.split("-")[0];
+
+	$(".dropdown-content a").css({
+		'color': 'white',
+		'text-decoration': 'none'
+	});
+	$(evt.target).css({
+		'color': 'lightblue',
+		'text-decoration': 'underline'
+	});
+
+	shouldDisplayEvents = false;
+	hideEvents();
+
+	evt.preventDefault();
 };
 
 $(document).ready(() => {
@@ -91,8 +219,8 @@ $(document).ready(() => {
 
 	$("#submit").click(submitForm);
 
-	$("#display").click(displayEvents);
-	$("#date-sort").click(sortEvents("date"));
-	$("#start-sort").click(sortEvents("start"));
-	$("#duration-sort").click(sortEvents("duration"));
+	$("#display").click(toggleEvents);
+	$("#date-sort").click(sortEvents);
+	$("#start-sort").click(sortEvents);
+	$("#duration-sort").click(sortEvents);
 });

@@ -28,7 +28,8 @@ form button {
 }
 
 form button:hover {
-	background-color: #2494b9;
+	background-color: lightblue;
+	color: #124772
 }
 
 form h2 {
@@ -46,21 +47,27 @@ form h2 {
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: #f9f9f9;
+	background-color: #124772;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
 
 .dropdown-content a {
-	color: black;
+	color: white;
 	padding: 12px 16px;
 	display: block;
 	text-decoration: none;
 	cursor: pointer;
 }
 
+#date-sort {
+	color: lightblue;
+	text-decoration: underline;
+}
+
 .dropdown-content a:hover {
-	background-color: #ddd;
+	background-color: lightblue;
+	color: #124772
 }
 
 .dropdown:hover .dropdown-content {
@@ -100,7 +107,8 @@ header button {
 }
 
 header button:hover {
-	background-color: #2494b9;
+	background-color: lightblue;
+	color: #124772;
 }
 
 label {
@@ -118,6 +126,7 @@ input {
 	border-style: solid;
 	border-color: lightgrey;
 	border-radius: 1em;
+	width: 20em;
 }
 
 /* change the color of the icons */
@@ -135,4 +144,51 @@ input::-webkit-calendar-picker-indicator {
 	padding: 10px;
 }
 
-.events button {}
+.events button {
+	border-radius: 1em;
+	border-style: none;
+	background-color: #124772;
+	color: white;
+	padding: 1em;
+}
+
+.events button:hover {
+	background-color: lightblue;
+}
+
+#confirmation {
+	color: lightgreen;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+
+form span {
+	color: red;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+#display_list {
+	display: flex;
+	flex-direction: column;
+}
+
+ol {
+	list-style: none;
+	margin-right: 3em;
+}
+
+li {
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	padding: 0.5em;
+	border: 2px solid #124772;
+	border-radius: 0.5em;
+	background-color: #124772;
+	color: lightgrey;
+}
+
+li span {
+	padding: 0.2em;
+}
