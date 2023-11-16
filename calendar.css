@@ -1,0 +1,40 @@
+#calendar {
+	color: lightblue;
+	border-bottom: 3px solid lightblue;
+}
+
+#interactive-calendar {
+	font-family: 'Arial', sans-serif;
+	max-width: 600px;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.calendar-header {
+	background-color: #3498db;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+.calendar-days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+
+.day:hover {
+	background-color: #f2f2f2;
+}
+
+.today {
+	background-color: #3498db;
+	color: #fff;
+}

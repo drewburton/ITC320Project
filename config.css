@@ -74,41 +74,9 @@ form h2 {
 	display: block;
 }
 
-header {
-	background-color: #124772;
-	color: white;
-	overflow: hidden;
-	font-family: 'Lato', sans-serif;
-}
-
-body {
-	margin: 0;
-	font-family: 'Lato', sans-serif;
-}
-
-h1 {
-	margin: 0px;
-	float: left;
-	padding: 0.3em;
-}
-
-header button {
-	color: white;
-	background: none;
-	border: none;
-	text-decoration: none;
-	padding: 1.5em 2em;
-	float: right;
-}
-
 #events {
 	color: lightblue;
 	border-bottom: 3px solid lightblue;
-}
-
-header button:hover {
-	background-color: lightblue;
-	color: #124772;
 }
 
 label {
