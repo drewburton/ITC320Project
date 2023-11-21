@@ -11,10 +11,10 @@
   </head>
   <body>
     <main>
-        <button onclick="location.href='./index.html'">Back</button>
+        <button onclick="location.href='./index.html'">Home</button>
         <h1 id="pageHeader">Customer Registration</h1>
 
-        <form id="registrationForm">
+        <form id="registrationForm" onsubmit="return storeUser()">
             <p>
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName">
@@ -36,22 +36,22 @@
             </p>
 
             <p>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email">
-                <span class="required">*</span>
-
-                <label for="confirmEmail">Confirm Email</label>
-                <input type="email" id="confirmEmail" name="confirmEmail">
-                <span class="required">*</span>
-            </p>
-
-            <p>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password">
                 <span class="required">*</span>
             
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" name="confirmPassword">
+                <span class="required">*</span>
+            </p>
+
+            <p>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <span class="required">*</span>
+
+                <label for="confirmEmail">Confirm Email</label>
+                <input type="email" id="confirmEmail" name="confirmEmail">
                 <span class="required">*</span>
             </p>
 
@@ -64,24 +64,38 @@
                 <input type="text" id="zipCode" name="zipCode">
                 <span class="required">*</span>
             </p>
-
-            <!-- <p> in progress
-                <label for="stateCode">State Code</label>
-                <input type="text" id="stateCode" name="stateCode">
-                <span class="required">*</span>
-            
-                <label for="">Zip Code</label>
-                <input type="radio" id="po" name="paymentType" value="PO">
-                <input type="radio" id="cash" name="paymentType" value="Cash">
-                <input type="radio" id="credit" name="paymentType" value="Credit">
-            </p> -->
         </form>
+        
+        <center>
+            <p> 
+                <label style="padding-right: 40px;">Customer Type</label>
+                <input form="registrationForm" type="radio" id="business" name="customerType" value="Business">
+                <label for="business">Business</label>
+                <input form="registrationForm" type="radio" id="personal" name="customerType" value="Personal">
+                <label for="personal">Personal</label>
+                <input form="registrationForm" type="radio" id="government" name="customerType" value="Government">
+                <label style="padding-right: 20px;" for="government">Government</label>
+            </p>
+        </center>
+
+        <center>
+        <p> 
+            <label style="padding-right: 40px;">Payment Type</label>
+            <input form="registrationForm" type="radio" id="po" name="paymentType" value="PO">
+            <label for="po">PO</label>
+            <input form="registrationForm" type="radio" id="cash" name="paymentType" value="Cash">
+            <label for="cash">Cash</label>
+            <input form="registrationForm" type="radio" id="credit" name="paymentType" value="Credit">
+            <label for="credit">Credit</label>
+        </p>
+        </center>
 
         <div id="submitForm">
-        <input form="registrationForm" type="submit" value="Register User">
+        <input id="submitButton" form="registrationForm" type="submit" value="Register User">
         </div>
 
     </main>
-	<!-- <script src="index.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="registration.js"></script>
   </body>
 </html>

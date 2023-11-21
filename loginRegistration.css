@@ -1,9 +1,14 @@
 /*
  * @Developer: Brock Jones
  */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #124772;
+  color: lightgray;
+}
+
 form { 
   display: table; 
-  column-count: 2;
   margin: auto;   
 }
 
@@ -19,6 +24,10 @@ label {
 input { 
   display: table-cell;
   padding: 10px;
+  background-color: #6b6b6b;
+  color: lightgray;
+  border: 3px lightgray solid;
+  border-radius: 1em;
 }
 
 #submitForm {
@@ -38,4 +47,17 @@ span {
 
 h1 {
   text-align: center;
+}
+
+#submitButton {
+  background-color: darkgreen;
+}
+
+button {
+  background-color: maroon;
+  border: 3px lightgray solid;
+  border-radius: 1em;
+  color: lightgray;
+  width: 8em;
+  height: 3em;
 }
