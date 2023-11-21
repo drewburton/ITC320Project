@@ -4,17 +4,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Website Title</title>
+        <title>Calender Home</title>
         <style>
             
             body {
+                
                 margin: 0;
                 font-family: 'Arial', sans-serif;
-                background-color: #f0f0f0;
+                background-color:rgb(112, 76, 76);
                 align-items: center;
                 text-align: center;
+                align-content: center;
+                justify-content: center;
             }
 
+            .splash-screen h1{
+                top:0cm;
+            }
             .splash-screen {
                 display: flex;
                 align-items: center;
@@ -24,7 +30,7 @@
                 text-align: center;
                 color: #40c9ff; 
                 background-color: #124772; 
-                           }
+            }
             header {
                 background: rgb(163, 162, 162);
                 color: white;
@@ -32,6 +38,7 @@
                 text-align: center;
                 position: fixed;
                 width: 100%;
+                
             }
 
             header img {
@@ -54,57 +61,59 @@
             }
 
             header button {
-                background-color:rgb(163, 162, 162); 
+                background: rgb(163, 162, 162);
                 color: #eee; 
                 border: none;
-                padding: 10px 10px;
+                padding: 12px 12px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
                 border-radius: 10px;
-                padding-inline-end: 1cm;
                 text-align: center;
             }
 
             header button:hover {
                 background-color: #555; 
             }    
-            #ImageContainer {
+          
+            #combinedContainer {
+                text-align: left;
+                background-color: rgb(163, 162, 162);
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                padding: 20px;
                 display: flex;
-                justify-content: flex-start; /* Align items to the left */
-                align-items: center;
-                height: 200vh;
-                padding-top: 0;
-                padding-left: 2cm;
-
+                max-width: 800px;
+                margin: 0 auto;
+               
             }
 
-            #ImageContainer img {
-                max-width: 100%;
-                height: auto;
+            #combinedContainer img {
                 border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-                        
-            h2 {
-                color: #333;
-            }
-            body h1 {
-                padding: 1cm;
-                color: #6b6b6b;
+                margin-right: 20px;
+                max-width: 100%;
+                flex: 0 0 50%;
+                border: 2px solid #eee;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             }
 
-        img {
-            max-width: 40%;
-            max-height: 40%;
-            margin-top: 20px;
-            /* border: 2px solid #333;
-             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-             
-        }
+            #combinedContainer p {
+                color: #333;
+                font-size: 35px; /* Adjust the font size as needed */
+                line-height: 1.5; /* Improve readability with proper line height */
+                padding-top: 70px;
+            }
+                
+            #TextContainer {
+                text-align: center;
+                display: flex;
+                font-family: Arial, sans-serif;
+                font-size: 2.5vw; 
+                margin: 55vh; 
+                color: whitesmoke;
+            }
+           
         </style>
-        <!-- Splash Screen -->
-       
 
     </head>
     <header id="main-header">
@@ -119,53 +128,34 @@
             <a href="registration.html"><button type="button">Registration</button></a>
             <a href="wakeup.html"><button type="button">Events</button></a>
         </ul>
+        
     </header>
     <div class="splash-screen" id="splashScreen">
-        <h1 id="splashText"></h1>
+        <h2 id="splashText"></h2>
     </div>
     <body>
 
-        <h1>Get Started</h1>
+        <h1>Home</h1>
         <!-- Header -->
-        <div id = "ImageContainer"> 
-            <img src="PIC1.jfif" alt="Calender">
-            
+        <div id = "combinedContainer"> 
+            <img src="Events.jpg" alt="Calender">
+           
+            <p>Effortless Event Management, Anytime, Anywhere.</p>
         </div>
-
-    </body>
+        
+            <div id = "TextContainer"> 
+                <!-- <img src="best-wordpress-calendar-plugins.jpg" alt="Calender">  -->
+               
+                <p>Your gateway to organized living starts here. 
+                    Log in to manage your events seamlessly and discover the 
+                    convenience of QR codes for on-the-go access.</p>
+            </div>
+            <div id = "TextButtonContainer"> 
+                <img src="Capture.PNG" alt="Calender">
+                <button onclick="location.href='./login.html'">Get started</button>
+               <button>
+            </div>
+        </body>
+    <script src="home.js"></script> 
 </html>
 
-<script>
-        
-    document.addEventListener('DOMContentLoaded', function() {
-        const splashText = document.getElementById('splashText');
-        const splashScreen = document.getElementById('splashScreen');
-        const header = document.getElementById('main-header');
-
-        const messages = [
-            'Welcome to Your Website\n',
-            'Discover Exciting Events\n',
-            'Explore the Calendar\n',
-            'Connect with Us'   
-        ];
-
-        let index = 0;
-
-        function updateSplashText() {
-            splashText.textContent += messages[index];
-            index = (index + 1) % messages.length;
-        }
-
-        // Initial update
-        updateSplashText();
-
-        const textInterval = setInterval(updateSplashText, 1000);
-
-        // Show header after a certain time 
-        setTimeout(function() {
-            clearInterval(textInterval);
-          
-        }, 3500); 
-    });
-    splashText.style.whiteSpace = 'pre-line';
-</script>

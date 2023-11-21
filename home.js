@@ -1,25 +1,34 @@
-//  const splash= document.querySelector('.splash-screen');
-//  document.addEventListener('DOMContentLoaded', (e) =>{
-//     setTimeout(()=>{
-//         splash.classList.add('display-none');
-//     }, 2000);
-//  });
 
-//  const header = document.querySelector('.header');
-//  window.onscroll = function(){
-//     var top = window.scrollY;
-//     if(top>=50){
-//         header.classList.add('active');
-//     }else{
-//         header.classList.remove('active');
-//     }
-//  }
-//  // Display the splash screen for 3 seconds (adjust as needed)
-//  setTimeout(function() {
-//     document.getElementById('splash-screen').style.opacity = 1;
-// }, 3000);
+"use strict";
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const splashText = document.getElementById('splashText');
+        const splashScreen = document.getElementById('splashScreen');
+        const header = document.getElementById('main-header');
 
-// // Redirect to the main page after the splash screen
-// setTimeout(function() {
-//     window.location.href = "index.html"; // Replace with your main page
-// }, 5000); // Adjust the delay as needed
+        const messages = [
+            'Welcome to Your Website\n',
+            'Discover Exciting Events\n',
+            'Explore the Calendar\n',
+            'Connect with Us'   
+        ];
+
+        let index = 0;
+
+        function updateSplashText() {
+            splashText.textContent += messages[index];
+            index = (index + 1) % messages.length;
+        }
+
+        // Initial update
+        updateSplashText();
+
+        const textInterval = setInterval(updateSplashText, 1250);
+
+        // Show header after a certain time 
+        setTimeout(function() {
+            clearInterval(textInterval);
+          
+        }, 3750); 
+    });
+    splashText.style.whiteSpace = 'pre-line';
