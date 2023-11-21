@@ -5,4 +5,6 @@ $(document).ready(() => {
 	$("#calendar").click(() => location.reload());
 	$("#events").click(() => location.href = "config.html");
 	$("#about").click(() => location.href = "about.html");
+
+	$("#datepicker").datepicker();
 });
