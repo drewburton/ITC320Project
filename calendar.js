@@ -124,8 +124,12 @@ const deleteEvent = event => {
 	}
 };
 
-const generateQR = event => {
-
+const generateQR = async event => {
+	// has to generate link to automatically log in user
+	// problem: data doesn't transfer from localStorage
+	// solution: create new page and pass the data to load in query params
+	// this page could be disconnected from the rest of the site or
+	// could be one way direction back to home page
 };
 
 const displayEvents = date => {
@@ -158,7 +162,11 @@ const displayEvents = date => {
 
 		let qr = $("<button>");
 		qr.text("Generate QR code");
-		qr.click(() => generateQR(e));
+		qr.click(async () => {
+			qr.text("Loading...");
+			await generateQR(e)
+			qr.text("Generate QR code");
+		});
 
 		entry.append(title);
 		entry.append(startTime);
