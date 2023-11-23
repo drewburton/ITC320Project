@@ -180,6 +180,7 @@ const displayEvents = date => {
 
 $(document).ready(() => {
 	$("#home").click(() => location.href = "index.html");
+	$("#wakeup").click(() => location.href = "wakeup.html");
 	$("#calendar").click(() => location.reload());
 	$("#events").click(() => location.href = "config.html");
 	$("#about").click(() => location.href = "about.html");
