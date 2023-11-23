@@ -125,9 +125,16 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #confirmation {
-	color: lightgreen;
 	margin: 0 auto;
 	margin-top: 1em;
+}
+
+.confirmation {
+	color: lightgreen;
+}
+
+.duplicate {
+	color: red;
 }
 
 form span {

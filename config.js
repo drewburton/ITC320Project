@@ -2,88 +2,144 @@
 
 var sortType = "date";
 var shouldDisplayEvents = false;
+var sortComparators = new Map();
+sortComparators.set("date", (e1, e2) => {
+	if (e1.date > e2.date)
+		return 1;
+	else if (e1.date < e2.date)
+		return -1;
+	return 0;
+});
+sortComparators.set("start", (e1, e2) => {
+	if (e1.startHours > e2.startHours)
+		return 1;
+	else if (e1.startHours < e2.startHours)
+		return -1;
+	else if (e1.startMinutes > e2.startMinutes)
+		return 1;
+	else if (e1.startMinutes < e2.startMinutes)
+		return -1;
+	return 0;
+});
+sortComparators.set("duration", (e1, e2) => {
+	if (e1.duration > e2.duration)
+		return 1;
+	else if (e1.duration < e2.duration)
+		return -1;
+	return 0;
+}
+);
 
-const submitForm = evt => {
+class Event {
+	constructor(user, title, date, startHours, startMinutes, duration) {
+		this.user = user
+		this.title = title;
+		this.date = date;
+		this.startHours = startHours;
+		this.startMinutes = startMinutes;
+		this.duration = duration
+	}
+}
+
+function validateForm(title, date, hours, minutes, duration, user) {
 	let valid = true;
 
 	// validate title
-	let title = $("#title").val();
 	if (!title) {
-		valid = false;
 		$("#title").next("span").text("Please enter a title");
+		valid = false;
 	}
 
 	// validate date
-	let date = $("#date").val().split("-");
-	date = new Date(date[0], date[1], date[2]);
 	if (date == "Invalid Date") {
-		valid = false;
 		$("#date").next("span").text("Enter a valid date");
+		valid = false;
 	}
 
 	// validate start time
-	let start = $("#start").val().split(":");
-	let hours = parseInt(start[0]);
-	let minutes = parseInt(start[1]);
 	if (!hours && !minutes) {
-		valid = false;
 		$("#start").next("span").text("Enter a valid time");
+		valid = false;
 	}
 
 	// validate duration
-	let duration = parseInt($("#duration").val());
 	if (!duration) {
-		valid = false;
 		$("#duration").next("span").text("Enter a valid duration");
+		valid = false;
 	}
 
 	// validate user
-	let user = sessionStorage.currentUser || "admin";
 	if (!user) {
-		valid = false;
 		alert("Please login to create events");
+		valid = false;
 	}
+	return valid;
+}
 
-	// display errors and prevent submission if invalid
-	if (!valid) {
-		evt.preventDefault();
+function isDuplicate(event, existingEvents) {
+	for (let e of existingEvents) {
+		e.date = new Date(e.date);
+		if (e.date.getTime() === event.date.getTime() && e.title === event.title && e.user === event.user) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function addEvent(event) {
+	// add to web storage
+	let existingEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+	// display error if event already exists
+	if (isDuplicate(event, existingEvents)) {
+		$("#confirmation").toggleClass("duplicate");
+		$("#confirmation").text("Your event already exists");
+		setTimeout(() => {
+			$("#confirmation").text("")
+			$("#confirmation").toggleClass("duplicate");
+		}, 3000);
 	} else {
-		// create event object
-		let event = {
-			user: user,
-			title: title,
-			date: date,
-			startHours: hours,
-			startMinutes: minutes,
-			duration: duration
-		};
-
-		// add to web storage
-		let existingEvents = JSON.parse(localStorage.getItem("events")) || [];
 		existingEvents.push(event);
 		let jsonString = JSON.stringify(existingEvents);
 		localStorage.events = jsonString;
 
-		// clear fields, display confirmation message,
-		// and focus on first input
-		$("#title").val("");
-		$("#date").val("");
-		$("#start").val("");
-		$("#duration").val("");
-		$("form span").text("");
-
-		$("#title").next("span").text("");
-		$("#date").next("span").text("");
-		$("#start").next("span").text("");
-		$("#duration").next("span").text("");
-
-		$("#title").focus();
-
 		$("#confirmation").text("Your event has been successfully added");
 		setTimeout(() => $("#confirmation").text(""), 3000);
-
-		evt.preventDefault();
 	}
+	// clear fields and focus on first input
+	$("#title").val("");
+	$("#date").val("");
+	$("#start").val("");
+	$("#duration").val("");
+	$("form input + span.afterInput").text("");
+
+	$("#title").next("span").text("");
+	$("#date").next("span").text("");
+	$("#start").next("span").text("");
+	$("#duration").next("span").text("");
+
+	$("#title").focus();
+}
+
+const submitForm = evt => {
+	evt.preventDefault();
+	// get fields
+	let title = $("#title").val();
+	let date = $("#date").val().split("-");
+	date = new Date(date[0], date[1] - 1, date[2]);
+	let start = $("#start").val().split(":");
+	let hours = parseInt(start[0]);
+	let minutes = parseInt(start[1]);
+	let duration = parseInt($("#duration").val());
+	let user = sessionStorage.currentUser || "admin";
+
+	// add event if it is valid
+	if (validateForm(title, date, hours, minutes, duration, user)) {
+		let event = new Event(user, title, date, hours, minutes, duration);
+
+		addEvent(event);
+	}
+	evt.preventDefault();
 };
 
 const displayEvents = () => {
@@ -102,45 +158,11 @@ const displayEvents = () => {
 		return;
 	}
 
+	// get events for the current user
 	let events = JSON.parse(localStorage.events).filter(event => event.user === user) || [];
 	events.map(event => event.date = new Date(event.date));
 
-	// sort the elements by sort type
-	switch (sortType) {
-		case "date":
-			events.sort((e1, e2) => {
-				if (e1.date > e2.date)
-					return 1;
-				else if (e1.date < e2.date)
-					return -1;
-				return 0;
-			});
-			break;
-		case "start":
-			events.sort((e1, e2) => {
-				if (e1.startHours > e2.startHours)
-					return 1;
-				else if (e1.startHours < e2.startHours)
-					return -1;
-				else if (e1.startMinutes > e2.startMinutes)
-					return 1;
-				else if (e1.startMinutes < e2.startMinutes)
-					return -1;
-				return 0;
-			});
-			break;
-		case "duration":
-			events.sort((e1, e2) => {
-				if (e1.duration > e2.duration)
-					return 1;
-				else if (e1.duration < e2.duration)
-					return -1;
-				return 0;
-			})
-			break;
-		default:
-			throw new Error("invalid sort type");
-	}
+	events.sort(sortComparators.get(sortType));
 
 	// display in a list (remove any duplicates from web storage while doing this) 
 	for (let i = 0; i < events.length; i++) {
@@ -156,12 +178,8 @@ const displayEvents = () => {
 		$(date).text("Date: " + events[i].date.toDateString());
 
 		let startTime = document.createElement('span');
-		let hours = events[i].startHours;
-		let am = "AM"
-		if (hours > 12) {
-			am = "PM";
-			hours -= 12;
-		}
+		let am = events[i].startHours > 12 ? "PM" : "AM";
+		let hours = events[i].startHours > 12 ? events[i].startHours - 12 : events[i].startHours;
 		let minutes = events[i].startMinutes.toString().padStart(2, 0);
 		$(startTime).text("Time: " + hours + ":" + minutes + " " + am);
 
