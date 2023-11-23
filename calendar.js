@@ -1,5 +1,16 @@
 "use strict";
 
+class Event {
+	constructor(user, title, date, startHours, startMinutes, duration) {
+		this.user = user
+		this.title = title;
+		this.date = date;
+		this.startHours = startHours;
+		this.startMinutes = startMinutes;
+		this.duration = duration
+	}
+}
+
 function formatDateString(inputDateString) {
 	const date = new Date(inputDateString);
 
@@ -10,6 +21,36 @@ function formatDateString(inputDateString) {
 	const formattedDate = `${year}-${month}-${day}`;
 
 	return formattedDate;
+}
+
+function validateEdit(title, date, hours, minutes, duration) {
+	let valid = true;
+
+	// validate title
+	if (!title) {
+		$("#title").next("span").text("Please enter a title");
+		valid = false;
+	}
+
+	// validate date
+	if (date == "Invalid Date") {
+		$("#date").next("span").text("Enter a valid date");
+		valid = false;
+	}
+
+	// validate start time
+	if (!hours && !minutes) {
+		$("#start").next("span").text("Enter a valid time");
+		valid = false;
+	}
+
+	// validate duration
+	if (!duration) {
+		$("#duration").next("span").text("Enter a valid duration");
+		valid = false;
+	}
+
+	return valid;
 }
 
 const getUserEvents = () => {
@@ -32,7 +73,7 @@ const getEventsByDate = date => {
 	return undefined;
 }
 
-const editEvent = event => {
+const autofillEdit = event => {
 	$(".edit").toggleClass("edit-inactive");
 
 	$("#title").val(event.title);
@@ -40,13 +81,52 @@ const editEvent = event => {
 	$("#start").val(event.startHours + ":" + event.startMinutes.toString().padStart(2, 0));
 	$("#duration").val(event.duration);
 
-	// add validation
-	// event listener for confirm button
+	$("#confirm").off("click");
+	$("#confirm").on("click", () => {
+		let title = $("#title").val();
+		let date = $("#date").val().split("-");
+		date = new Date(date[0], date[1] - 1, date[2]);
+		let start = $("#start").val().split(":");
+		let hours = parseInt(start[0]);
+		let minutes = parseInt(start[1]);
+		let duration = parseInt($("#duration").val());
+		let user = sessionStorage.currentUser || "admin";
+
+		if (validateEdit(title, date, hours, minutes, duration)) {
+			let remainingEvents = JSON.parse(localStorage.events).filter(e =>
+				e.title !== event.title ||
+				e.date !== event.date ||
+				e.user !== event.user);
+
+			let newEvent = new Event(user, title, date, hours, minutes, duration);
+			remainingEvents.push(newEvent);
+			localStorage.events = JSON.stringify(remainingEvents);
+			$(".edit").toggleClass("edit-inactive");
+			$("#datepicker").datepicker("refresh");
+			$(".events").css("display", "none");
+		}
+	});
+};
+
+const deleteEvent = event => {
+	const isConfirmed = window.confirm("Are you sure you want to delete " + event.title + "?");
+
+	if (isConfirmed) {
+		// get events in storage
+		let remainingEvents = JSON.parse(localStorage.events).filter(e =>
+			e.title !== event.title ||
+			e.date !== event.date ||
+			e.user !== event.user);
+
+		localStorage.events = JSON.stringify(remainingEvents);
+		$("#datepicker").datepicker("refresh");
+		$(".events").css("display", "none");
+	}
 };
 
 const generateQR = event => {
 
-}
+};
 
 const displayEvents = date => {
 	$(".events").css("display", "block");
@@ -70,7 +150,11 @@ const displayEvents = date => {
 
 		let edit = $("<button>");
 		edit.text("Edit");
-		edit.click(() => editEvent(e));
+		edit.click(() => autofillEdit(e));
+
+		let del = $("<button>");
+		del.text("Delete");
+		del.click(() => deleteEvent(e));
 
 		let qr = $("<button>");
 		qr.text("Generate QR code");
@@ -80,6 +164,7 @@ const displayEvents = date => {
 		entry.append(startTime);
 		entry.append(duration);
 		entry.append(edit);
+		entry.append(del);
 		entry.append(qr);
 		$("ol").append(entry);
 	}
