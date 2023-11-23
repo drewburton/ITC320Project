@@ -3,6 +3,99 @@
 	border-bottom: 3px solid lightblue;
 }
 
+.events {
+	border-top: 2px solid;
+	text-align: center;
+	width: fit-content;
+	margin: 0 auto;
+	margin-top: 2em;
+	padding: 10px;
+	display: none;
+}
+
 .ui-datepicker {
 	margin: 0 auto;
+}
+
+li {
+	display: flex;
+	flex-direction: row;
+}
+
+li p {
+	padding: 5px;
+}
+
+li button {
+	height: fit-content;
+	margin: auto 5px;
+}
+
+.edit {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	padding-top: 1em;
+	border: 2px solid #124772;
+	border-radius: 1em;
+	background-color: #124772;
+	padding: 20px;
+	margin: 1em auto;
+}
+
+.edit-inactive {
+	display: none;
+}
+
+.edit input {
+	margin-bottom: .5em;
+}
+
+.edit button {
+	margin-bottom: 1em;
+	background-color: lightgrey;
+	border-radius: 5px;
+	color: #124772;
+	width: fit-content;
+	padding: 10px;
+	margin: 0 auto;
+	margin-top: 0.5em;
+	border-style: none;
+	font-size: 1em;
+}
+
+.edit button:hover {
+	background-color: lightblue;
+	color: #124772
+}
+
+.edit h2 {
+	color: lightgrey;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	border-bottom: 2px solid;
+}
+
+label {
+	font-size: 1.4em;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	color: lightgrey;
+}
+
+input {
+	margin-left: 1em;
+	padding: 0.5em;
+	color: lightgray;
+	background-color: #124772;
+	border-style: solid;
+	border-color: lightgrey;
+	border-radius: 1em;
+	width: 20em;
+}
+
+/* change the color of the icons */
+/* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
+input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
 }

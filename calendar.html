@@ -24,6 +24,33 @@
 		<div id="datepicker"></div>
 	</main>
 
+	<div class="events">
+		<h2>Events</h2>
+		<ol></ol>
+	</div>
+
+	<div class="edit edit-inactive">
+		<h2>Edit</h2>
+		<label for="title">Title</label>
+		<input type="text" id="title">
+		<span></span>
+
+		<label for="date">Date</label>
+		<input type="date" id="date">
+		<span></span>
+
+		<label for="start">Start Time</label>
+		<input type="time" id="start">
+		<span></span>
+
+		<label for="duration">Duration</label>
+		<input type="text" id="duration">
+		<span></span>
+
+		<button id="confirm">Confirm changes</button>
+		<span id="confirmation"></span>
+	</div>
+
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="./jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 	<script src="calendar.js"></script>
