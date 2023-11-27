@@ -18,9 +18,17 @@ body {
 	font-size: 5em;
 }
 
+#title {
+	font-size: 2em;
+}
+
 @keyframes BackgroundAnimation {
 	0% {
 		background-position: 0% 0%
+	}
+
+	80% {
+		background-position: 80% 40%;
 	}
 
 	100% {

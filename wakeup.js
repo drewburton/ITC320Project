@@ -40,8 +40,8 @@ function getParams() {
 
 function setInfo() {
 	$('#title').text(title);
-	$('#time').text(startHours + ":" + startMinutes + " " + am);
-	$('#duration').text(duration + " minutes");
+	$('#time').text("at " + startHours + ":" + startMinutes + " " + am);
+	$('#duration').text("for " + duration + " minutes");
 	setCountdown();
 }
 
