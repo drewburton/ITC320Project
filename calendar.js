@@ -140,6 +140,13 @@ const displayEvents = date => {
 
 	for (const e of events) {
 		let entry = $("<li>");
+		let link = $("<button>");
+		link.addClass("event");
+		link.click(() => {
+			location.search = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration;
+			location.pathname = "/wakeup.html"
+		});
+
 		let title = $("<p>");
 		title.text(e.title);
 
@@ -154,33 +161,40 @@ const displayEvents = date => {
 
 		let edit = $("<button>");
 		edit.text("Edit");
-		edit.click(() => autofillEdit(e));
+		edit.click(evt => {
+			autofillEdit(e)
+			evt.stopPropagation();
+		});
 
 		let del = $("<button>");
 		del.text("Delete");
-		del.click(() => deleteEvent(e));
+		del.click(evt => {
+			deleteEvent(e)
+			evt.stopPropagation();
+		});
 
 		let qr = $("<button>");
 		qr.text("Generate QR code");
-		qr.click(async () => {
+		qr.click(async evt => {
+			evt.stopPropagation();
 			qr.text("Loading...");
 			await generateQR(e)
 			qr.text("Generate QR code");
 		});
 
-		entry.append(title);
-		entry.append(startTime);
-		entry.append(duration);
-		entry.append(edit);
-		entry.append(del);
-		entry.append(qr);
+		link.append(title);
+		link.append(startTime);
+		link.append(duration);
+		link.append(edit);
+		link.append(del);
+		link.append(qr);
+		entry.append(link);
 		$("ol").append(entry);
 	}
 };
 
 $(document).ready(() => {
 	$("#home").click(() => location.href = "index.html");
-	$("#wakeup").click(() => location.href = "wakeup.html");
 	$("#calendar").click(() => location.reload());
 	$("#events").click(() => location.href = "config.html");
 	$("#about").click(() => location.href = "about.html");

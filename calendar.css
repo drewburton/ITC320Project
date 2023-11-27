@@ -17,16 +17,16 @@
 	margin: 0 auto;
 }
 
-li {
+.event {
 	display: flex;
 	flex-direction: row;
 }
 
-li p {
+.event p {
 	padding: 5px;
 }
 
-li button {
+.event button {
 	height: fit-content;
 	margin: auto 5px;
 }

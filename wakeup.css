@@ -3,12 +3,6 @@
 	border-bottom: 3px solid lightblue;
 }
 
-/*body {
-	margin: 0;
-	height: 100vh;
-	overflow: hidden;
-}*/
-
 body {
 	height: 100vh;
 	background: linear-gradient(to bottom, #191970, #ffa700);
