@@ -143,8 +143,9 @@ const displayEvents = date => {
 		let link = $("<button>");
 		link.addClass("event");
 		link.click(() => {
-			location.search = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration;
-			location.pathname = "/wakeup.html"
+			let query = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration;
+			let path = "/wakeup.html";
+			location.href = path + query;
 		});
 
 		let title = $("<p>");
