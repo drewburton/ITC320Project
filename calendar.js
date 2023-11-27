@@ -143,7 +143,7 @@ const displayEvents = date => {
 		let link = $("<button>");
 		link.addClass("event");
 		link.click(() => {
-			let query = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration;
+			let query = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration + "&date=" + date;
 			let path = "/wakeup.html";
 			location.href = path + query;
 		});

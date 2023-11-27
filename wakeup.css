@@ -9,12 +9,31 @@ body {
 	background-size: 400% 400%;
 }
 
-@keyframes Animation {
+.info {
+	color: white;
+	text-align: center;
+}
+
+#countdown {
+	font-size: 5em;
+}
+
+@keyframes BackgroundAnimation {
 	0% {
 		background-position: 0% 0%
 	}
 
 	100% {
 		background-position: 100% 100%
+	}
+}
+
+@keyframes InfoAnimation {
+	0% {
+		color: white
+	}
+
+	100% {
+		color: black
 	}
 }
