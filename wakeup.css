@@ -2,3 +2,25 @@
 	color: lightblue;
 	border-bottom: 3px solid lightblue;
 }
+
+/*body {
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+}*/
+
+body {
+	height: 100vh;
+	background: linear-gradient(to bottom, #191970, #ffa700);
+	background-size: 400% 400%;
+}
+
+@keyframes Animation {
+	0% {
+		background-position: 0% 0%
+	}
+
+	100% {
+		background-position: 100% 100%
+	}
+}
