@@ -64,6 +64,7 @@ h1{
 }
 
 #combinedContainer {
+   
     overflow: hidden;
     text-align: left;
     background-color: #124772;
@@ -117,30 +118,39 @@ h1{
   margin-right: 50vh;
 }
 #CreateEventsContainer {
-
-    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 1vh;
-    display:block;
+    padding-top: 5vh;
+    padding-bottom: 8vh;
+    background-color: #124772;
    
 }
-#GetStartedButton{
-
+#CreateEventsContainer img {
+    border-radius: 1ch;
+    border: 1px solid rgb(13, 0, 71); 
+}
+#CreateEventsContainer img:hover {
+    cursor:pointer;
+}
+#GetStartedButton {
     border-radius: 1em;
-	border-style: none;
-	background-color: #124772;
-	color: white;
-	padding: 1em;
+    border-style: none;
+    background-color: #124772;
+    color: white;
+    padding: 1em;
+    margin-top: 1em; 
 }
-#CreateEventsContainer h2{
-    color:#124772
+
+#CreateEventsContainer h2 {
+   color:white;
 }
+
 #GetStartedButton:hover {
-	background-color: lightblue;
-}
-#footer {
-   margin-top: 10vh;
+    background-color: lightblue;
+}#footer {
+   
     bottom: 0;
     left: 0;
     overflow: hidden;
@@ -157,6 +167,12 @@ h1{
     margin-bottom: 10px;
     font-size: 16px;
     transition: border-bottom 0.3s;
+  }
+  #footer img {
+    
+    left: 30px; 
+    max-width: 50px; 
+    height: auto; 
   }
   .marketing-container {
     display: flex;

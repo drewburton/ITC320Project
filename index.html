@@ -12,14 +12,13 @@
     <header id="main-header">
             <img src="Images/logo1 (2).png"> 
         <ul>
-            <a href="about.html"><button type="button">About</button></a>
-            <a href="calendar.html"><button type="button">Calendar</button></a>
-            <a href="config.html"><button type="button">Config</button></a>
-            <a href="confirmation.html"><button type="button">Confirmation</button></a>
-            <a href="credits.html"><button type="button">Credits</button></a>
             <a href="login.html"><button type="button">Login</button></a>
-            <a href="registration.html"><button type="button">Registration</button></a>
-            <a href="wakeup.html"><button type="button">Events</button></a>
+            <a href="registration.html"><button type="button">Register</button></a>
+            <a href="config.html"><button type="button">Add Events</button></a>
+            <a href="about.html"><button type="button">About</button></a>
+            <a href="credits.html"><button type="button">Credits</button></a>
+           
+           
         </ul>
         
     </header>
@@ -47,57 +46,72 @@
             </div>
             <div class="marketing-container">
                 <div class="marketing-item">
-                    <img src="Images/daynight.png" alt="Image 1">
+                    <img src="Images/Calender.png" alt="Image 1">
                     <div class="marketing-info">
-                        <p>Day and night modes<br> for user preference</p>
+                        <p>Create and manage your events with ease.<br> 
+                            Personalize your calendar to stay organized and <br>never miss an important date.</p>
                     </div>
                 </div>
             
-                <div class="marketing-item">
-                    <img src="Images/lock.png" alt="Image 2">
-                    <div class="marketing-info">
-                        <p>User authentication<br> for secure login</p>
-                    </div>
-                </div>
-            
+                
                 <div class="marketing-item">
                     <img src="Images/dynamic.png" alt="Image 3">
                     <div class="marketing-info">
-                        <p>Dynamic webpages with a modern design.</p>
+                        <p>Elevate your online presence with dynamic webpages <br>featuring a sleek and modern design. </p>
                     </div>
                 </div>
+
+                <div class="marketing-item">
+                    <img src="Images/automation.png" alt="Image 2">
+                    <div class="marketing-info">
+                        <p>Automatic loading of the next event based on your schedule. 
+                            <br>Effortlessly stay organized as our system intelligently <br>adapts to your calendar. </p>
+                    </div>
+                </div> 
+                
+            
             </div>
             <div class="marketing-container">
                 <div class="marketing-item">
                     <img src="Images/alarm.png" alt="Image 1">
                     <div class="marketing-info">
-                        <p>Configurable alarm settings <br>with gradient and text options</p>
+                        <p>Stay in control of your schedule with a feature-rich system that caters <br>to both your practical needs and aesthetic taste.</p>
                     </div>
                 </div>
             
                 <div class="marketing-item">
-                    <img src="Images/automation.png" alt="Image 2">
+                    <img src="Images/QR code.png" alt="Image 1">
                     <div class="marketing-info">
-                        <p>Automatic loading of the next event <br>based on the user's schedule</p>
+                        <p>Unlock unparalleled ease of use with our mobile-friendly system, <br>seamlessly accessible by scanning a QR code.</p>
                     </div>
-                </div>       
+                </div>
+            
+                
+                <div class="marketing-item">
+                    <img src="Images/lock.png" alt="Image 2">
+                    <div class="marketing-info">
+                        <p>Experience peace of mind with our robust user authentication 
+                            <br>system. We prioritize your data's safety by implementing
+                            <br> industry-standard security measures, 
+                           
+                    </div>
+                </div>
+
             </div>
          
             <div id = "CreateEventsContainer"> 
                 <h2>START CREATING YOUR OWN EVENTS</h2>
-                <img src="Images/Capture.PNG" alt="Calender">
-                
+                <img src="Images/Capture.PNG" alt="Calender" onclick="location.href='./registration.html'">
+                <button id="GetStartedButton" onclick="location.href='./registration.html'">Get started</button>
             </div>
-            <button id="GetStartedButton" onclick="location.href='./login.html'">Get started</button>
-           
-          
-        
-                <div id="footer">
-                  <a href="#reach-us">Reach Us</a>
-                  <a href="#about.html">About</a>
-                  <a href="#credits.html">Services</a>
-                </div>
-              
+
+            <div id="footer">
+                <img src="Images/logo1 (2).png" alt="Logo">
+                <a href="#reach-us">Reach Us</a>
+                <a href="about.html">About</a>
+                <a href="credits.html">Services</a>
+            </div>
+            
         </body>
     <script src="home.js"></script> 
 </html>
