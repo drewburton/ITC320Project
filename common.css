@@ -28,4 +28,13 @@ header button {
 	text-decoration: none;
 	padding: 1.5em 2em;
 	float: right;
+	transition: all 0.3s ease;
+}
+
+header img {
+	float: left;
+	left: 30px;
+	max-width: 50px;
+	height: auto;
+	padding-top: 0.3em;
 }

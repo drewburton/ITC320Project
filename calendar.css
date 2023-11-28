@@ -3,6 +3,10 @@
 	border-bottom: 3px solid lightblue;
 }
 
+#calendar:hover {
+	color: #124772;
+}
+
 .ui-datepicker {
 	margin: 0 auto;
 }
