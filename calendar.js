@@ -129,7 +129,7 @@ const generateQR = async (event, date) => {
 		"?title=" + event.title + "&startHours=" + event.startHours +
 		"&startMinutes=" + event.startMinutes + "&duration=" +
 		event.duration + "&date=" + date;
-	let domain = "http://api.qrserver.com/v1/create-qr-code";
+	let domain = "https://api.qrserver.com/v1/create-qr-code";
 	let params = "?data=" + encodeURIComponent(link) + "&size=100x100";
 	let url = new URL(domain + params);
 	await fetch(url)
@@ -163,7 +163,7 @@ const displayEvents = date => {
 		link.click(() => {
 			let query = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration + "&date=" + date;
 			let path = "/ITC320Project/wakeup.html";
-			location.href = path + query;
+			location.href = encodeURIComponent(path + query);
 		});
 
 		let title = $("<p>");

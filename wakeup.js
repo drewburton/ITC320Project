@@ -15,19 +15,19 @@ function getParams() {
 		let value = parts[1];
 		switch (key) {
 			case 'title':
-				title = value;
+				title = decodeURIComponent(value);
 				break;
 			case 'startHours':
-				startHours = parseInt(value);
+				startHours = parseInt(decodeURIComponent(value));
 				break;
 			case 'startMinutes':
-				startMinutes = parseInt(value);
+				startMinutes = parseInt(decodeURIComponent(value));
 				break;
 			case 'duration':
-				duration = parseInt(value);
+				duration = parseInt(decodeURIComponent(value));
 				break;
 			case 'date':
-				date = new Date(value);
+				date = new Date(decodeURIComponent(value));
 		}
 	}
 	date.setHours(startHours);
