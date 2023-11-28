@@ -125,7 +125,7 @@ const deleteEvent = event => {
 };
 
 const generateQR = async (event, date) => {
-	let link = location.protocol + "//" + location.hostname + "/wakeup.html" +
+	let link = location.protocol + "//" + location.hostname + "/ITC320Project/wakeup.html" +
 		"?title=" + event.title + "&startHours=" + event.startHours +
 		"&startMinutes=" + event.startMinutes + "&duration=" +
 		event.duration + "&date=" + date;
@@ -162,7 +162,7 @@ const displayEvents = date => {
 		link.addClass("event");
 		link.click(() => {
 			let query = "?title=" + e.title + "&startHours=" + e.startHours + "&startMinutes=" + e.startMinutes + "&duration=" + e.duration + "&date=" + date;
-			let path = "/wakeup.html";
+			let path = "/ITC320Project/wakeup.html";
 			location.href = path + query;
 		});
 
