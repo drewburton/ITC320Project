@@ -133,7 +133,7 @@ const generateQR = async (event, date) => {
 		"&startMinutes=" + event.startMinutes + "&duration=" +
 		event.duration + "&date=" + date;
 	let domain = "https://api.qrserver.com/v1/create-qr-code";
-	let params = "?data=" + encodeURIComponent(link) + "&size=100x100";
+	let params = "?data=" + encodeURIComponent(link) + "&size=200x200";
 	let url = new URL(domain + params);
 	await fetch(url)
 		.then(res => { return res.blob() })

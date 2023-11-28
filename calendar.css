@@ -3,8 +3,14 @@
 	border-bottom: 3px solid lightblue;
 }
 
-#qr {
-	text-align: center;
+.ui-datepicker {
+	margin: 0 auto;
+}
+
+/* change the color of the icons */
+/* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
+input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
 }
 
 .events {
@@ -17,22 +23,78 @@
 	display: none;
 }
 
-.ui-datepicker {
-	margin: 0 auto;
-}
-
 .event {
 	display: flex;
 	flex-direction: row;
 }
 
 .event p {
-	padding: 5px;
+	padding: 3px;
 }
 
 .event button {
 	height: fit-content;
 	margin: auto 5px;
+}
+
+ol {
+	list-style: none;
+	padding: 0;
+}
+
+li {
+	padding: 0.5em;
+}
+
+li p {
+	font-size: 1.3em;
+}
+
+li button:first-child {
+	border-radius: 1em;
+	border-style: none;
+	background-color: #124772;
+	color: white;
+	transition: transform 0.3s ease;
+}
+
+li button:first-child:hover {
+	transform: scale(1.1);
+}
+
+button button {
+	border-style: none;
+	border-radius: 1em;
+	padding: 0.6em;
+	background-color: lightgrey;
+	color: #124772;
+	transition: all 0.3s ease;
+}
+
+button button:hover {
+	background-color: #9f9f9f;
+}
+
+#qr {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#qr button {
+	width: fit-content;
+	padding: 0.6em 1em 0.6em 1em;
+	margin: 0.5em auto;
+	border-style: none;
+	background-color: #124772;
+	color: white;
+	border-radius: 1em;
+	transition: transform 0.3s ease;
+}
+
+#qr button:hover {
+	transform: scale(1.1);
 }
 
 .edit {
@@ -66,11 +128,11 @@
 	margin-top: 0.5em;
 	border-style: none;
 	font-size: 1em;
+	transition: all 0.3s ease;
 }
 
 .edit button:hover {
-	background-color: lightblue;
-	color: #124772
+	background-color: #9f9f9f;
 }
 
 .edit h2 {
@@ -96,10 +158,4 @@ input {
 	border-color: lightgrey;
 	border-radius: 1em;
 	width: 20em;
-}
-
-/* change the color of the icons */
-/* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
-input::-webkit-calendar-picker-indicator {
-	filter: invert(1);
 }

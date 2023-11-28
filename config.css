@@ -25,11 +25,11 @@ form button {
 	margin-top: 0.5em;
 	border-style: none;
 	font-size: 1em;
+	transition: all 0.3s ease;
 }
 
 form button:hover {
-	background-color: lightblue;
-	color: #124772
+	background-color: #9f9f9f;
 }
 
 form h2 {
@@ -58,6 +58,7 @@ form h2 {
 	display: block;
 	text-decoration: none;
 	cursor: pointer;
+	transition: all 0.3s ease;
 }
 
 #date-sort {
@@ -66,8 +67,7 @@ form h2 {
 }
 
 .dropdown-content a:hover {
-	background-color: lightblue;
-	color: #124772
+	background-color: #0f395c;
 }
 
 .dropdown:hover .dropdown-content {
@@ -118,10 +118,11 @@ input::-webkit-calendar-picker-indicator {
 	background-color: #124772;
 	color: white;
 	padding: 1em;
+	transition: transform 0.3s ease;
 }
 
 .events button:hover {
-	background-color: lightblue;
+	transform: scale(1.1);
 }
 
 #confirmation {
