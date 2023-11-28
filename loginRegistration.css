@@ -8,6 +8,7 @@ body {
 }
 
 form { 
+  padding: 10px;
   display: table; 
   margin: auto;   
 }
@@ -36,12 +37,12 @@ input {
 }
 
 span {
-  display: table-cell;
   padding-left: 10px;
   padding-right: 20px;
 }
 
 .required {
+  display: table-cell;
   color: red;
 }
 
