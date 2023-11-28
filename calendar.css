@@ -3,6 +3,10 @@
 	border-bottom: 3px solid lightblue;
 }
 
+#qr {
+	text-align: center;
+}
+
 .events {
 	border-top: 2px solid;
 	text-align: center;

@@ -124,12 +124,30 @@ const deleteEvent = event => {
 	}
 };
 
-const generateQR = async event => {
-	// has to generate link to automatically log in user
-	// problem: data doesn't transfer from localStorage
-	// solution: create new page and pass the data to load in query params
-	// this page could be disconnected from the rest of the site or
-	// could be one way direction back to home page
+const generateQR = async (event, date) => {
+	let link = location.protocol + "//" + location.hostname + "/wakeup.html" +
+		"?title=" + event.title + "&startHours=" + event.startHours +
+		"&startMinutes=" + event.startMinutes + "&duration=" +
+		event.duration + "&date=" + date;
+	let domain = "http://api.qrserver.com/v1/create-qr-code";
+	let params = "?data=" + encodeURIComponent(link) + "&size=100x100";
+	let url = new URL(domain + params);
+	await fetch(url)
+		.then(res => { return res.blob() })
+		.then(blob => {
+			var img = URL.createObjectURL(blob);
+
+			let elem = $("<img>");
+			elem.attr('src', img);
+			$('#qr').empty();
+			$('#qr').append(elem);
+		});
+	let hide = $("<button>");
+	hide.text("hide");
+	hide.click(() => {
+		$('#qr').empty();
+	});
+	$('#qr').append(hide);
 };
 
 const displayEvents = date => {
@@ -179,7 +197,7 @@ const displayEvents = date => {
 		qr.click(async evt => {
 			evt.stopPropagation();
 			qr.text("Loading...");
-			await generateQR(e)
+			await generateQR(e, date);
 			qr.text("Generate QR code");
 		});
 
