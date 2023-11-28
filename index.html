@@ -5,119 +5,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Calender Home</title>
-        <style>
-            
-            body {
-                
-                margin: 0;
-                font-family: 'Arial', sans-serif;
-                background-color:rgb(112, 76, 76);
-                align-items: center;
-                text-align: center;
-                align-content: center;
-                justify-content: center;
-            }
-
-            .splash-screen h1{
-                top:0cm;
-            }
-            .splash-screen {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100vh;
-                overflow: hidden;
-                text-align: center;
-                color: #40c9ff; 
-                background-color: #124772; 
-            }
-            header {
-                background: rgb(163, 162, 162);
-                color: white;
-                padding: 15px;
-                text-align: center;
-                position: fixed;
-                width: 100%;
-                
-            }
-
-            header img {
-                height: 40px;
-                margin-right: 10px;
-            }
-
-            header ul {
-                list-style: none;
-                display: flex;
-                justify-content: flex-end;
-                padding: 0;
-                margin: 0;
-            }
-
-            header ul a {
-                text-decoration: none;
-                color: #fff;
-                margin: 0 10px;
-            }
-
-            header button {
-                background: rgb(163, 162, 162);
-                color: #eee; 
-                border: none;
-                padding: 12px 12px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                border-radius: 10px;
-                text-align: center;
-            }
-
-            header button:hover {
-                background-color: #555; 
-            }    
-          
-            #combinedContainer {
-                text-align: left;
-                background-color: rgb(163, 162, 162);
-                border-radius: 10px;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-                padding: 20px;
-                display: flex;
-                max-width: 800px;
-                margin: 0 auto;
-               
-            }
-
-            #combinedContainer img {
-                border-radius: 8px;
-                margin-right: 20px;
-                max-width: 100%;
-                flex: 0 0 50%;
-                border: 2px solid #eee;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            }
-
-            #combinedContainer p {
-                color: #333;
-                font-size: 35px; /* Adjust the font size as needed */
-                line-height: 1.5; /* Improve readability with proper line height */
-                padding-top: 70px;
-            }
-                
-            #TextContainer {
-                text-align: center;
-                display: flex;
-                font-family: Arial, sans-serif;
-                font-size: 2.5vw; 
-                margin: 55vh; 
-                color: whitesmoke;
-            }
+        <link rel="stylesheet" href="common.css">
+        <link rel="stylesheet" href="index.css">        
            
-        </style>
-
     </head>
     <header id="main-header">
-            
+            <img src="Images/logo1 (2).png"> 
         <ul>
             <a href="about.html"><button type="button">About</button></a>
             <a href="calendar.html"><button type="button">Calendar</button></a>
@@ -130,6 +23,9 @@
         </ul>
         
     </header>
+    <div class="splashscreen">
+        <img src="Images/logo1 (2).png" alt="Logo">
+      </div>
     <div class="splash-screen" id="splashScreen">
         <h2 id="splashText"></h2>
     </div>
@@ -138,23 +34,70 @@
         <h1>Home</h1>
         <!-- Header -->
         <div id = "combinedContainer"> 
-            <img src="Events.jpg" alt="Calender">
+            <img src="Images/blue-december-2022-calendar-template-j7euw.png" alt="Calender">
            
             <p>Effortless Event Management, Anytime, Anywhere.</p>
         </div>
         
             <div id = "TextContainer"> 
-                <!-- <img src="best-wordpress-calendar-plugins.jpg" alt="Calender">  -->
-               
+                
                 <p>Your gateway to organized living starts here. 
                     Log in to manage your events seamlessly and discover the 
                     convenience of QR codes for on-the-go access.</p>
             </div>
-            <div id = "TextButtonContainer"> 
-                <img src="Capture.PNG" alt="Calender">
-                <button onclick="location.href='./login.html'">Get started</button>
-               <button>
+            <div class="marketing-container">
+                <div class="marketing-item">
+                    <img src="Images/daynight.png" alt="Image 1">
+                    <div class="marketing-info">
+                        <p>Day and night modes<br> for user preference</p>
+                    </div>
+                </div>
+            
+                <div class="marketing-item">
+                    <img src="Images/lock.png" alt="Image 2">
+                    <div class="marketing-info">
+                        <p>User authentication<br> for secure login</p>
+                    </div>
+                </div>
+            
+                <div class="marketing-item">
+                    <img src="Images/dynamic.png" alt="Image 3">
+                    <div class="marketing-info">
+                        <p>Dynamic webpages with a modern design.</p>
+                    </div>
+                </div>
             </div>
+            <div class="marketing-container">
+                <div class="marketing-item">
+                    <img src="Images/alarm.png" alt="Image 1">
+                    <div class="marketing-info">
+                        <p>Configurable alarm settings <br>with gradient and text options</p>
+                    </div>
+                </div>
+            
+                <div class="marketing-item">
+                    <img src="Images/automation.png" alt="Image 2">
+                    <div class="marketing-info">
+                        <p>Automatic loading of the next event <br>based on the user's schedule</p>
+                    </div>
+                </div>       
+            </div>
+         
+            <div id = "CreateEventsContainer"> 
+                <h2>START CREATING YOUR OWN EVENTS</h2>
+                <img src="Images/Capture.PNG" alt="Calender">
+                
+            </div>
+            <button id="GetStartedButton" onclick="location.href='./login.html'">Get started</button>
+           
+          
+        
+                <div id="footer">
+                  <a href="#reach-us">Reach Us</a>
+                  <a href="#about.html">About</a>
+                  <a href="#credits.html">Services</a>
+                </div>
+              
         </body>
     <script src="home.js"></script> 
 </html>

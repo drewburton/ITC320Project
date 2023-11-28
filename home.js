@@ -1,6 +1,28 @@
 
 "use strict";
-        
+document.addEventListener("DOMContentLoaded", function () {
+    
+    setTimeout(function () {
+      var splashScreen = document.querySelector(".splashscreen");
+  
+      fadeOut(splashScreen);
+    }, 4000); 
+  
+    function fadeOut(element) {
+      var opacity = 1;
+      var interval = setInterval(function () {
+        if (opacity > 0) {
+          opacity -= 0.1;
+          element.style.opacity = opacity;
+        } else {
+          clearInterval(interval);
+          element.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      }, 50); 
+    }
+  });
+    
     document.addEventListener('DOMContentLoaded', function() {
         const splashText = document.getElementById('splashText');
         const splashScreen = document.getElementById('splashScreen');
@@ -20,12 +42,9 @@
             index = (index + 1) % messages.length;
         }
 
-        // Initial update
         updateSplashText();
-
         const textInterval = setInterval(updateSplashText, 1250);
-
-        // Show header after a certain time 
+       
         setTimeout(function() {
             clearInterval(textInterval);
           
