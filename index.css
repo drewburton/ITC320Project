@@ -8,6 +8,22 @@ body {
     align-content: center;
     justify-content: center;
 }
+.mode {
+    float:right;
+}
+.change {
+    cursor: pointer;
+    border: 1px solid #555;
+    border-radius: 40%;
+    width: 20px;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
+}
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
+}
 
 .splashscreen {
     width: 100%;

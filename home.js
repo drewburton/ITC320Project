@@ -1,5 +1,8 @@
 
 "use strict";
+
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+  
 document.addEventListener("DOMContentLoaded", function () {
     
     setTimeout(function () {
@@ -50,4 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
           
         }, 3750); 
     });
-    splashText.style.whiteSpace = 'pre-line';
+    $( ".change" ).on("click", function() {
+      if( $( "body" ).hasClass( "dark" )) {
+          $( "body" ).removeClass( "dark" );
+          $( ".change" ).text( "OFF" );
+      } else {
+          $( "body" ).addClass( "dark" );
+          $( ".change" ).text( "ON" );
+      }
+  });
