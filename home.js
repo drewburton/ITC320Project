@@ -1,8 +1,5 @@
 
 "use strict";
-
-"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-  
 document.addEventListener("DOMContentLoaded", function () {
     
     setTimeout(function () {
@@ -26,39 +23,44 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
     
-    document.addEventListener('DOMContentLoaded', function() {
-        const splashText = document.getElementById('splashText');
-        const splashScreen = document.getElementById('splashScreen');
-        const header = document.getElementById('main-header');
+  document.addEventListener('DOMContentLoaded', function() {
+    const splashText = document.getElementById('splashText');
+    const splashScreen = document.getElementById('splashScreen');
+    const header = document.getElementById('main-header');
 
-        const messages = [
-            'Welcome to Your Website\n',
-            'Discover Exciting Events\n',
-            'Explore the Calendar\n',
-            'Connect with Us'   
-        ];
+    const messages = [
+      'Welcome to Your Website<br>',
+      'Discover Exciting Events<br>',
+      'Explore the Calendar<br>',
+      'Connect with Us' 
+    ];
 
-        let index = 0;
+    let index = 0;
 
-        function updateSplashText() {
-            splashText.textContent += messages[index];
-            index = (index + 1) % messages.length;
-        }
+    function updateSplashText() {
+        splashText.innerHTML += messages[index];
+        index = (index + 1) % messages.length;
+    }
 
-        updateSplashText();
-        const textInterval = setInterval(updateSplashText, 1250);
-       
-        setTimeout(function() {
-            clearInterval(textInterval);
-          
-        }, 3750); 
-    });
+    updateSplashText();
+    const textInterval = setInterval(updateSplashText, 1250);
+   
+    setTimeout(function() {
+        clearInterval(textInterval);
+    }, 3750);
+});
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"
+   
     $( ".change" ).on("click", function() {
       if( $( "body" ).hasClass( "dark" )) {
-          $( "body" ).removeClass( "dark" );
+        $( "body" ).removeClass( "dark" );  
+        $( "header" ).removeClass( "dark" );
+          $( "div" ).removeClass( "dark" );
           $( ".change" ).text( "OFF" );
       } else {
           $( "body" ).addClass( "dark" );
+          $( "header" ).addClass( "dark" );
+          $( "div" ).addClass( "dark" );
           $( ".change" ).text( "ON" );
       }
   });
