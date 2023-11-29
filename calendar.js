@@ -217,6 +217,14 @@ const displayEvents = date => {
 	}
 };
 
+const viewNextEvent = () => {
+	let query = "?rollover=true";
+	if (location.pathname.endsWith('/'))
+		location.pathname = location.pathname.substring(0, location.pathname.length - 1);
+	let path = location.pathname.substring(0, location.pathname.lastIndexOf('/')) + "/wakeup.html";
+	location.href = path + query;
+}
+
 $(document).ready(() => {
 	$("#home").click(() => location.href = "index.html");
 	$("#calendar").click(() => location.reload());
@@ -237,4 +245,6 @@ $(document).ready(() => {
 			displayEvents(dateText);
 		}
 	});
+
+	$(".next").click(viewNextEvent);
 });

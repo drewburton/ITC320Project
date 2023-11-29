@@ -1,3 +1,12 @@
+#events {
+	color: lightblue;
+	border-bottom: 3px solid lightblue;
+}
+
+#events:hover {
+	color: #124772;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
@@ -39,6 +48,49 @@ form h2 {
 	border-bottom: 2px solid;
 }
 
+label {
+	font-size: 1.4em;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	color: lightgrey;
+}
+
+input {
+	margin-left: 1em;
+	padding: 0.5em;
+	color: lightgray;
+	background-color: #124772;
+	border-style: solid;
+	border-color: lightgrey;
+	border-radius: 1em;
+	width: 20em;
+}
+
+/* change the color of the icons */
+/* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
+input::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+}
+
+#confirmation {
+	margin: 0 auto;
+	margin-top: 1em;
+}
+
+.confirmation {
+	color: lightgreen;
+}
+
+.duplicate {
+	color: red;
+}
+
+form span {
+	color: red;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
 .dropdown {
 	position: relative;
 	display: inline-block;
@@ -74,39 +126,6 @@ form h2 {
 	display: block;
 }
 
-#events {
-	color: lightblue;
-	border-bottom: 3px solid lightblue;
-}
-
-#events:hover {
-	color: #124772;
-}
-
-label {
-	font-size: 1.4em;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	color: lightgrey;
-}
-
-input {
-	margin-left: 1em;
-	padding: 0.5em;
-	color: lightgray;
-	background-color: #124772;
-	border-style: solid;
-	border-color: lightgrey;
-	border-radius: 1em;
-	width: 20em;
-}
-
-/* change the color of the icons */
-/* https://stackoverflow.com/questions/62162645/change-color-of-chromes-calendar-icon-in-html-date-input */
-input::-webkit-calendar-picker-indicator {
-	filter: invert(1);
-}
-
 .events {
 	border-top: 2px solid;
 	text-align: center;
@@ -127,25 +146,6 @@ input::-webkit-calendar-picker-indicator {
 
 .events button:hover {
 	transform: scale(1.1);
-}
-
-#confirmation {
-	margin: 0 auto;
-	margin-top: 1em;
-}
-
-.confirmation {
-	color: lightgreen;
-}
-
-.duplicate {
-	color: red;
-}
-
-form span {
-	color: red;
-	margin-left: 1em;
-	margin-bottom: 0.5em;
 }
 
 #display_list {
