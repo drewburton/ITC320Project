@@ -15,12 +15,16 @@ class Gradient {
 	}
 }
 
+// define map of gradients options
 var gradients = new Map();
 gradients.set("sunrise", "linear-gradient(to bottom, #191970, #ffa700)");
 gradients.set("bliss", "linear-gradient(to bottom, #1a1a2e, #30475e, #5c6b7f, #c0a7b8, #f4e1d2)")
 gradients.set("dawn", "linear-gradient(to bottom, #2b5876, #4e4376, #d15959)");
 gradients.set("twilight", "linear-gradient(to bottom, #1a1a1a, #4d394b, #7c5973, #ab789b, #db98c4)");
 
+/**
+ * Sets the global variables from the query parameters
+ */
 function getParams() {
 	let params = location.search.substring(1).split('&');
 	for (const param of params) {
@@ -59,12 +63,19 @@ function getParams() {
 	startMinutes = startMinutes.toString().padStart(2, 0);
 }
 
+/**
+ * Sets the text of the pages HTML elements
+ */
 function setInfo() {
 	$('#title').text(title);
 	$('#time').text("at " + startHours + ":" + startMinutes + " " + am);
 	$('#duration').text("for " + duration + " minutes");
 }
 
+/**
+ * Sets the countdown timer until the event starts
+ * resolves when timer reaches 0
+ */
 async function setCountdown() {
 	$('#status').text('');
 	await new Promise(resolve => {
@@ -90,6 +101,9 @@ async function setCountdown() {
 
 }
 
+/**
+ * Sets the background gradient in motion based on the time left
+ */
 function performAnimation() {
 	let time = Math.max(date - new Date(), 0) / 1000;
 	console.log("animation: ", time);
@@ -101,6 +115,10 @@ function performAnimation() {
 	$('.info').css('animation', `InfoAnimation ${time}s ease forwards`);
 }
 
+/**
+ * Sets the countdown timer to what is left of the duration of the event
+ * that has started
+ */
 async function setDuration() {
 	$('#status').text('This event is currently occuring');
 
@@ -126,6 +144,9 @@ async function setDuration() {
 	});
 }
 
+/**
+ * @returns the next event starting or currently happening for the current user
+ */
 function getNextEvent() {
 	const currentUser = sessionStorage.getItem('currentUser') || undefined;
 
@@ -151,6 +172,10 @@ function getNextEvent() {
 	return undefined;
 }
 
+/**
+ * sets the color of the gradient to the given value
+ * @param {*} value 
+ */
 function setGradient(value) {
 	$('body').css('background', gradients.get(value));
 	$('body').css('background-size', "400% 400%");
@@ -163,7 +188,9 @@ $(document).ready(async () => {
 	$("#events").click(() => location.href = "config.html");
 	$("#about").click(() => location.href = "about.html");
 
+	// define the select menu for the gradient
 	$("#gradient").selectmenu({
+		// get the value of the gradient stored or default to sunrise
 		create: function (evt, ui) {
 			let gradient = JSON.parse(localStorage.gradient ?? '{"gradient":"sunrise"}');
 			if (!localStorage.gradient && sessionStorage.currentUser) {
@@ -173,6 +200,7 @@ $(document).ready(async () => {
 			$(this).selectmenu('refresh');
 			setGradient(gradient.gradient);
 		},
+		// store the gradient and update the background on change
 		change: function (evt, ui) {
 			if (sessionStorage.currentUser) {
 				localStorage.gradient = JSON.stringify(new Gradient(sessionStorage.currentUser, ui.item.value));
@@ -183,6 +211,7 @@ $(document).ready(async () => {
 
 	getParams();
 
+	// handle looping through the next events until all have occured
 	if (rollover) {
 		let event = getNextEvent();
 
@@ -216,7 +245,7 @@ $(document).ready(async () => {
 		$('#title').text('');
 		$('#time').text('');
 		$('#duration').text('');
-	} else {
+	} else { // display the countdown for the selected event only
 		setInfo();
 		performAnimation();
 		await setCountdown();

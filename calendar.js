@@ -11,6 +11,11 @@ class Event {
 	}
 }
 
+/**
+ * formats a date string dd/mm/yyyy as yy-mm-dd
+ * @param {*} inputDateString 
+ * @returns 
+ */
 function formatDateString(inputDateString) {
 	const date = new Date(inputDateString);
 
@@ -23,6 +28,14 @@ function formatDateString(inputDateString) {
 	return formattedDate;
 }
 
+/**
+ * @param {*} title 
+ * @param {*} date 
+ * @param {*} hours 
+ * @param {*} minutes 
+ * @param {*} duration 
+ * @returns whether the input values are valid for an event
+ */
 function validateEdit(title, date, hours, minutes, duration) {
 	let valid = true;
 
@@ -53,6 +66,9 @@ function validateEdit(title, date, hours, minutes, duration) {
 	return valid;
 }
 
+/**
+ * @returns the events for the current user
+ */
 const getUserEvents = () => {
 	const currentUser = sessionStorage.getItem('currentUser') || undefined;
 
@@ -63,6 +79,10 @@ const getUserEvents = () => {
 	return undefined;
 };
 
+/**
+ * @param {*} date 
+ * @returns the events for the current user on the given date
+ */
 const getEventsByDate = date => {
 	const events = getUserEvents();
 	if (events) {
@@ -73,6 +93,10 @@ const getEventsByDate = date => {
 	return undefined;
 }
 
+/**
+ * populates the edit form with the current values of the event for editing
+ * @param {*} event 
+ */
 const autofillEdit = event => {
 	$(".edit").toggleClass("edit-inactive");
 
@@ -114,6 +138,10 @@ const autofillEdit = event => {
 	});
 };
 
+/**
+ * deletes an event from storage
+ * @param {*} event 
+ */
 const deleteEvent = event => {
 	const isConfirmed = window.confirm("Are you sure you want to delete " + event.title + "?");
 
@@ -135,6 +163,11 @@ const deleteEvent = event => {
 	}
 };
 
+/**
+ * generates the link and retrieves qr code for an event
+ * @param {*} event 
+ * @param {*} date 
+ */
 const generateQR = async (event, date) => {
 	if (location.pathname.endsWith('/'))
 		location.pathname = location.pathname.substring(0, location.pathname.length - 1);
@@ -164,6 +197,10 @@ const generateQR = async (event, date) => {
 	$('#qr').append(hide);
 };
 
+/**
+ * displays the events for a given day
+ * @param {*} date 
+ */
 const displayEvents = date => {
 	$(".events").css("display", "block");
 	$(".edit").addClass("edit-inactive");
@@ -228,6 +265,9 @@ const displayEvents = date => {
 	}
 };
 
+/**
+ * view the alarm for the next event for the current user on the alarm page
+ */
 const viewNextEvent = () => {
 	let query = "?rollover=true";
 	if (location.pathname.endsWith('/'))
@@ -242,6 +282,7 @@ $(document).ready(() => {
 	$("#events").click(() => location.href = "config.html");
 	$("#about").click(() => location.href = "about.html");
 
+	// set up the datepicker
 	$("#datepicker").datepicker({
 		beforeShowDay: function (date) {
 			const dateString = $.datepicker.formatDate('yy-mm-dd', date);
@@ -257,11 +298,13 @@ $(document).ready(() => {
 		}
 	});
 
+	// handle whether the page should be in dark mode
 	if (sessionStorage.darkMode === "on") {
 		$('body').css("background-color", "grey");
 		$('.ui-datepicker').css("background-color", "grey");
 	}
 
+	// hide the view next event button if the user is not logged in
 	if (sessionStorage.currentUser) {
 		$(".next").click(viewNextEvent);
 	} else {

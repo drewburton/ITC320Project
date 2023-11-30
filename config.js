@@ -2,6 +2,8 @@
 
 var sortType = "date";
 var shouldDisplayEvents = false;
+
+// defines comparators for display events sorted by different fields
 var sortComparators = new Map();
 sortComparators.set("date", (e1, e2) => {
 	if (e1.date > e2.date)
@@ -41,6 +43,15 @@ class Event {
 	}
 }
 
+/**
+ * @param {*} title 
+ * @param {*} date 
+ * @param {*} hours 
+ * @param {*} minutes 
+ * @param {*} duration 
+ * @param {*} user 
+ * @returns whether form inputs and user are valid
+ */
 function validateForm(title, date, hours, minutes, duration, user) {
 	let valid = true;
 
@@ -76,6 +87,12 @@ function validateForm(title, date, hours, minutes, duration, user) {
 	return valid;
 }
 
+/**
+ * @param {*} event 
+ * @param {*} existingEvents 
+ * @returns if an event starts at the same time as another event, 
+ * or has the same title for a given user
+ */
 function isDuplicate(event, existingEvents) {
 	for (let e of existingEvents) {
 		e.date = new Date(e.date);
@@ -87,6 +104,10 @@ function isDuplicate(event, existingEvents) {
 	return false;
 }
 
+/**
+ * adds event to events in local storage
+ * @param {*} event 
+ */
 function addEvent(event) {
 	// add to web storage
 	let existingEvents = JSON.parse(localStorage.getItem("events")) || [];
@@ -104,6 +125,7 @@ function addEvent(event) {
 		let jsonString = JSON.stringify(existingEvents);
 		localStorage.events = jsonString;
 
+		// display confirmation message after submission
 		$("#confirmation").text("Your event has been successfully added");
 		setTimeout(() => $("#confirmation").text(""), 3000);
 	}
@@ -122,6 +144,12 @@ function addEvent(event) {
 	$("#title").focus();
 }
 
+/**
+ * handles the logic for submiting the form
+ * including retrieving the fields, validation,
+ * and storing the event
+ * @param {*} evt 
+ */
 const submitForm = evt => {
 	evt.preventDefault();
 	// get fields
@@ -144,6 +172,10 @@ const submitForm = evt => {
 	evt.preventDefault();
 };
 
+/**
+ * displays the events from storage for the current user
+ * sorted by the selected option 
+ */
 const displayEvents = () => {
 	// read from web storage
 	let user = sessionStorage.currentUser || undefined;
@@ -152,7 +184,7 @@ const displayEvents = () => {
 		return;
 	}
 
-	// if no events display, display there are no events
+	// if no events to display, display there are no events
 	if (!localStorage.events) {
 		let span = document.createElement('span');
 		$(span).text("No events to display");
@@ -167,6 +199,7 @@ const displayEvents = () => {
 	events.sort(sortComparators.get(sortType));
 
 	// display in a list (remove any duplicates from web storage while doing this) 
+	// creates HTML elements and sets their fields
 	for (let i = 0; i < events.length; i++) {
 		let entry = document.createElement('li');
 
@@ -197,14 +230,14 @@ const displayEvents = () => {
 	}
 };
 
-const hideEvents = () => {
-	$("#display").text("Display");
-	$("ol").empty();
-}
-
+/**
+ * logic for the display button hiding or showing events
+ */
 const toggleEvents = () => {
 	if (shouldDisplayEvents) {
-		hideEvents();
+		$("#display").text("Display");
+		// removes the displayed elements
+		$("ol").empty();
 	} else {
 		$("#display").text("Hide");
 		displayEvents();
@@ -212,6 +245,11 @@ const toggleEvents = () => {
 	shouldDisplayEvents = !shouldDisplayEvents;
 }
 
+/**
+ * sets the sort type when user selects a choice
+ * hides the events displayed to prevent confusion
+ * @param {*} evt 
+ */
 const sortEvents = evt => {
 	// set global sort type and hide events
 	sortType = evt.target.id.split("-")[0];
@@ -244,6 +282,7 @@ $(document).ready(() => {
 	$("#start-sort").click(sortEvents);
 	$("#duration-sort").click(sortEvents);
 
+	// read dark mode set on home page
 	if (sessionStorage.darkMode === "on") {
 		$('body').css("background-color", "grey");
 	}
