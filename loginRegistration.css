@@ -3,12 +3,34 @@
  */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #124772;
-  color: lightgray;
+}
+
+.dark {
+  background-color: #121212;
+  color: whitesmoke;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.darkInput {
+  color: whitesmoke;
+  border: 3px whitesmoke solid;
+  background-color: dimgray;
+}
+
+.darkButton {
+  color: whitesmoke;
+  border: 3px whitesmoke solid;
+}
+
+.lightInput {
+  border: 3px black solid;
 }
 
 form { 
-  padding: 10px;
   display: table; 
   margin: auto;   
 }
@@ -25,9 +47,8 @@ label {
 input { 
   display: table-cell;
   padding: 10px;
-  background-color: #6b6b6b;
-  color: lightgray;
-  border: 3px lightgray solid;
+  background-color: whitesmoke;
+  /* color: lightgray; */
   border-radius: 1em;
 }
 
@@ -51,14 +72,14 @@ h1 {
 }
 
 #submitButton {
-  background-color: darkgreen;
+  background-color: green;
 }
 
 button {
-  background-color: maroon;
-  border: 3px lightgray solid;
+  background-color: darkred;
+  border: 3px black solid;
   border-radius: 1em;
-  color: lightgray;
+  /* color: lightgray; */
   width: 8em;
   height: 3em;
 }

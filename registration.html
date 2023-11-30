@@ -13,76 +13,86 @@
     <main>
         <button onclick="location.href='./index.html'">Home</button>
         <h1 id="pageHeader">Customer Registration</h1>
-        <div style="text-align: center; color: red;" id="errorMessages"></div>
 
         <form id="registrationForm" onsubmit="return storeUser()">
-            <p>
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName">
-                <span class="required">*</span>
-            
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="firstName">First Name</label>
+                <input class="inputFormCell" type="text" id="firstName" name="firstName">
+                <span class="required formCell">*</span>
             </p>
             
-            <p>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="lastName">Last Name</label>
+                <input class="inputFormCell" type="text" id="lastName" name="lastName">
+                <span class="required formCell">*</span>
+            </p>
             
-                <label for="phoneNumber">Phone Number</label>
-                <input type="text" id="phoneNumber" name="phoneNumber">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="username">Username</label>
+                <input class="inputFormCell" type="text" id="username" name="username">
+                <span class="required formCell">*</span>
             </p>
 
-            <p>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-                <span class="required">*</span>
-            
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="phoneNumber">Phone Number</label>
+                <input class="inputFormCell" type="text" id="phoneNumber" name="phoneNumber">
+                <span class="required formCell">*</span>
             </p>
 
-            <p>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email">
-                <span class="required">*</span>
-
-                <label for="confirmEmail">Confirm Email</label>
-                <input type="email" id="confirmEmail" name="confirmEmail">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="password">Password</label>
+                <input class="inputFormCell" type="password" id="password" name="password">
+                <span class="required formCell">*</span>
             </p>
 
-            <p>
-                <label for="stateCode">State Code</label>
-                <input type="text" id="stateCode" name="stateCode">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="confirmPassword">Confirm Password</label>
+                <input class="inputFormCell" type="password" id="confirmPassword" name="confirmPassword">
+                <span class="required formCell">*</span>
+            </p>
+
+            <p class="formRow">
+                <label class="labelFormCell" for="email">Email</label>
+                <input class="inputFormCell" type="email" id="email" name="email">
+                <span class="required formCell">*</span>
+            </p>
+
+            <p class="formRow">
+                <label class="labelFormCell" for="confirmEmail">Confirm Email</label>
+                <input class="inputFormCell" type="email" id="confirmEmail" name="confirmEmail">
+                <span class="required formCell">*</span>
+            </p>
+
+            <p class="formRow">
+                <label class="labelFormCell" for="stateCode">State Code</label>
+                <input class="inputFormCell" type="text" id="stateCode" name="stateCode">
+                <span class="required formCell">*</span>
+            </p>
             
-                <label for="zipCode">Zip Code</label>
-                <input type="text" id="zipCode" name="zipCode">
-                <span class="required">*</span>
+            <p class="formRow">
+                <label class="labelFormCell" for="zipCode">Zip Code</label>
+                <input class="inputFormCell" type="text" id="zipCode" name="zipCode">
+                <span class="required formCell">*</span>
             </p>
         </form>
         
         <center>
-            <p> 
-                <label style="padding-right: 40px;">Customer Type</label>
-                <input form="registrationForm" type="radio" id="business" name="customerType" value="Business">
-                <label for="business">Business</label>
-                <input form="registrationForm" type="radio" id="personal" name="customerType" value="Personal">
-                <label for="personal">Personal</label>
-                <input form="registrationForm" type="radio" id="government" name="customerType" value="Government">
-                <label style="padding-right: 20px;" for="government">Government</label>
-            </p>
+        <p> 
+            <label style="padding-right: 40px;">Customer Type</label>
+            <input form="registrationForm" type="radio" id="business" name="customerType" value="Business" checked="checked">
+            <label for="business">Business</label>
+            <input form="registrationForm" type="radio" id="personal" name="customerType" value="Personal">
+            <label for="personal">Personal</label>
+            <input form="registrationForm" type="radio" id="government" name="customerType" value="Government">
+            <label style="padding-right: 20px;" for="government">Government</label>
+        </p>
         </center>
+        
 
         <center>
         <p> 
             <label style="padding-right: 40px;">Payment Type</label>
-            <input form="registrationForm" type="radio" id="po" name="paymentType" value="PO">
+            <input form="registrationForm" type="radio" id="po" name="paymentType" value="PO" checked="checked">
             <label for="po">PO</label>
             <input form="registrationForm" type="radio" id="cash" name="paymentType" value="Cash">
             <label for="cash">Cash</label>
@@ -94,6 +104,8 @@
         <div id="submitForm">
         <input id="submitButton" form="registrationForm" type="submit" value="Register User">
         </div>
+        
+        <label></label>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

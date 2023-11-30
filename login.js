@@ -1,3 +1,5 @@
+const dark = (sessionStorage.getItem("darkMode") == "on");
+
 //Check to see if input matches any of the stored users.
 //If valid redirect to page and store username as currentUser.
 function loginUser(){
@@ -11,16 +13,28 @@ function loginUser(){
         console.log(user);
         if(user.username == loginUsername && user.password == loginPassword) {
             sessionStorage.setItem("currentUser", loginUsername);
-            console.log(localStorage.getItem("currentUser"));
             return true;
         }
     }
 
     $("#username").css("border","red 5px solid");
     $("#password").css("border","red 5px solid");
-    setTimeout(() => alert("Username or Password is incorrect."), 0);
+    $("#username").next().text("Login info is incorrect.");
+    $("#password").next().text("Login info is incorrect.");
 
     //Prevent form from submitting
     console.log("Prevent form from submitting.");
     return false;
 }
+
+$( document ).ready(function() {
+    if(dark) {
+        $("body").addClass("dark");
+        $("input").addClass("darkInput");
+        $("button").addClass("darkButton");
+    } else {
+        $("body").addClass("light");
+        $("#submitButton").css("background-color", "limegreen");
+        $("button").css("background-color", "red");
+    }
+});
