@@ -92,6 +92,7 @@ async function setCountdown() {
 
 function performAnimation() {
 	let time = Math.max(date - new Date(), 0) / 1000;
+	console.log("animation: ", time);
 	$('body').css('background-position', '0% 0%');
 	$('body').css('animation', `BackgroundAnimation ${time}s ease forwards`);
 	$('.info').css('animation', `InfoAnimation ${time}s ease forwards`)
@@ -162,16 +163,16 @@ $(document).ready(async () => {
 	$("#gradient").selectmenu({
 		create: function (evt, ui) {
 			let gradient = JSON.parse(localStorage.gradient ?? '{"gradient":"sunrise"}');
-			if (!localStorage.gradient && localStorage.currentUser) {
-				localStorage.gradient = JSON.stringify(new Gradient(localStorage.currentUser, "sunrise"));
+			if (!localStorage.gradient && sessionStorage.currentUser) {
+				localStorage.gradient = JSON.stringify(new Gradient(sessionStorage.currentUser, "sunrise"));
 			}
 			$('#gradient').val(gradient.gradient);
 			$(this).selectmenu('refresh');
 			setGradient(gradient.gradient);
 		},
 		change: function (evt, ui) {
-			if (localStorage.currentUser) {
-				localStorage.gradient = JSON.stringify(new Gradient(localStorage.currentUser, ui.item.value));
+			if (sessionStorage.currentUser) {
+				localStorage.gradient = JSON.stringify(new Gradient(sessionStorage.currentUser, ui.item.value));
 			}
 			setGradient(ui.item.value);
 		}
