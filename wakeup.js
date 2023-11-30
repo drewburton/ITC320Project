@@ -207,6 +207,10 @@ $(document).ready(async () => {
 			await setDuration();
 			event = getNextEvent();
 		}
+
+		if ($('body').css('background-position') != "0% 0%")
+			location.reload();
+
 		$('#status').text('There are no new events');
 		$('#countdown').text('');
 		$('#title').text('');
