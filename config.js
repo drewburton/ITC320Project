@@ -243,4 +243,8 @@ $(document).ready(() => {
 	$("#date-sort").click(sortEvents);
 	$("#start-sort").click(sortEvents);
 	$("#duration-sort").click(sortEvents);
+
+	if (sessionStorage.darkMode === "on") {
+		$('body').css("background-color", "grey");
+	}
 });

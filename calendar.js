@@ -257,6 +257,11 @@ $(document).ready(() => {
 		}
 	});
 
+	if (sessionStorage.darkMode === "on") {
+		$('body').css("background-color", "grey");
+		$('.ui-datepicker').css("background-color", "grey");
+	}
+
 	if (sessionStorage.currentUser) {
 		$(".next").click(viewNextEvent);
 	} else {
