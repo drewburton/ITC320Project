@@ -63,7 +63,7 @@ function validateForm(title, date, hours, minutes, duration, user) {
 	}
 
 	// validate duration
-	if (!duration) {
+	if (!duration || duration <= 0) {
 		$("#duration").next("span").text("Enter a valid duration");
 		valid = false;
 	}
@@ -79,7 +79,8 @@ function validateForm(title, date, hours, minutes, duration, user) {
 function isDuplicate(event, existingEvents) {
 	for (let e of existingEvents) {
 		e.date = new Date(e.date);
-		if (e.date.getTime() === event.date.getTime() && e.title === event.title && e.user === event.user) {
+		e.date.setHours(e.startHours, e.startMinutes);
+		if ((e.date.getTime() === event.date.getTime() || e.title === event.title) && e.user === event.user) {
 			return true;
 		}
 	}
@@ -130,6 +131,7 @@ const submitForm = evt => {
 	let start = $("#start").val().split(":");
 	let hours = parseInt(start[0]);
 	let minutes = parseInt(start[1]);
+	date.setHours(hours, minutes);
 	let duration = parseInt($("#duration").val());
 	let user = sessionStorage.currentUser || "admin";
 

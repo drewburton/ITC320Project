@@ -45,7 +45,7 @@ function validateEdit(title, date, hours, minutes, duration) {
 	}
 
 	// validate duration
-	if (!duration) {
+	if (!duration || duration <= 0) {
 		$("#duration").next("span").text("Enter a valid duration");
 		valid = false;
 	}
@@ -96,7 +96,13 @@ const autofillEdit = event => {
 			let remainingEvents = JSON.parse(localStorage.events).filter(e =>
 				e.title !== event.title ||
 				e.date !== event.date ||
-				e.user !== event.user);
+				e.user !== event.user
+			);
+			remainingEvents.filter(e => {
+				e.date !== event.date ||
+					e.startHours !== event.startHours ||
+					e.startMinutes !== event.startMinutes
+			});
 
 			let newEvent = new Event(user, title, date, hours, minutes, duration);
 			remainingEvents.push(newEvent);
@@ -117,6 +123,11 @@ const deleteEvent = event => {
 			e.title !== event.title ||
 			e.date !== event.date ||
 			e.user !== event.user);
+		remainingEvents.filter(e => {
+			e.date !== event.date ||
+				e.startHours !== event.startHours ||
+				e.startMinutes !== event.startMinutes
+		});
 
 		localStorage.events = JSON.stringify(remainingEvents);
 		$("#datepicker").datepicker("refresh");

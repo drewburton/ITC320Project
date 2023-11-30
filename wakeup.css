@@ -9,6 +9,19 @@ body {
 	background-size: 400% 400%;
 }
 
+.config {
+	width: fit-content;
+	background-color: #124772;
+	padding: 0.5em;
+	border-radius: 0 0 1em 0;
+}
+
+.config h3 {
+	color: white;
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
 .info {
 	color: white;
 	text-align: center;
@@ -38,6 +51,10 @@ body {
 
 @keyframes InfoAnimation {
 	0% {
+		color: white
+	}
+
+	80% {
 		color: white
 	}
 
