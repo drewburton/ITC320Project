@@ -133,7 +133,7 @@ const submitForm = evt => {
 	let minutes = parseInt(start[1]);
 	date.setHours(hours, minutes);
 	let duration = parseInt($("#duration").val());
-	let user = sessionStorage.currentUser || "admin";
+	let user = sessionStorage.currentUser || undefined;
 
 	// add event if it is valid
 	if (validateForm(title, date, hours, minutes, duration, user)) {
@@ -146,7 +146,7 @@ const submitForm = evt => {
 
 const displayEvents = () => {
 	// read from web storage
-	let user = sessionStorage.currentUser || "admin";
+	let user = sessionStorage.currentUser || undefined;
 	if (!user) {
 		alert("You must be logged in to view events");
 		return;

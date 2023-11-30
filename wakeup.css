@@ -35,6 +35,10 @@ body {
 	font-size: 2em;
 }
 
+.reset-animation {
+	animation: none;
+}
+
 @keyframes BackgroundAnimation {
 	0% {
 		background-position: 0% 0%

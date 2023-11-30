@@ -93,9 +93,12 @@ async function setCountdown() {
 function performAnimation() {
 	let time = Math.max(date - new Date(), 0) / 1000;
 	console.log("animation: ", time);
-	$('body').css('background-position', '0% 0%');
+
+	if ($('body').css('background-position') != "0% 0%")
+		location.reload();
+
 	$('body').css('animation', `BackgroundAnimation ${time}s ease forwards`);
-	$('.info').css('animation', `InfoAnimation ${time}s ease forwards`)
+	$('.info').css('animation', `InfoAnimation ${time}s ease forwards`);
 }
 
 async function setDuration() {
@@ -124,7 +127,7 @@ async function setDuration() {
 }
 
 function getNextEvent() {
-	const currentUser = sessionStorage.getItem('currentUser') || "admin";
+	const currentUser = sessionStorage.getItem('currentUser') || undefined;
 
 	if (currentUser) {
 		let storedEvents = JSON.parse(localStorage.getItem('events')) || [];

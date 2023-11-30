@@ -54,7 +54,7 @@ function validateEdit(title, date, hours, minutes, duration) {
 }
 
 const getUserEvents = () => {
-	const currentUser = sessionStorage.getItem('currentUser') || "admin";
+	const currentUser = sessionStorage.getItem('currentUser') || undefined;
 
 	if (currentUser) {
 		const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
@@ -90,7 +90,7 @@ const autofillEdit = event => {
 		let hours = parseInt(start[0]);
 		let minutes = parseInt(start[1]);
 		let duration = parseInt($("#duration").val());
-		let user = sessionStorage.currentUser || "admin";
+		let user = sessionStorage.currentUser || undefined;
 
 		if (validateEdit(title, date, hours, minutes, duration)) {
 			let remainingEvents = JSON.parse(localStorage.events).filter(e =>
@@ -257,5 +257,9 @@ $(document).ready(() => {
 		}
 	});
 
-	$(".next").click(viewNextEvent);
+	if (sessionStorage.currentUser) {
+		$(".next").click(viewNextEvent);
+	} else {
+		$(".next").css('display', 'none');
+	}
 });
