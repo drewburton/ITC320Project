@@ -78,7 +78,7 @@ const autofillEdit = event => {
 
 	$("#title").val(event.title);
 	$("#date").val(formatDateString(event.date));
-	$("#start").val(event.startHours + ":" + event.startMinutes.toString().padStart(2, 0));
+	$("#start").val(event.startHours.toString().padStart(2, 0) + ":" + event.startMinutes.toString().padStart(2, 0));
 	$("#duration").val(event.duration);
 
 	$("#confirm").off("click");
