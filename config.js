@@ -194,6 +194,13 @@ const displayEvents = () => {
 
 	// get events for the current user
 	let events = JSON.parse(localStorage.events).filter(event => event.user === user) || [];
+	if (events.length === 0) {
+		let span = document.createElement('span');
+		$(span).text("No events to display");
+		$("ol").append(span);
+		return;
+	}
+
 	events.map(event => event.date = new Date(event.date));
 
 	events.sort(sortComparators.get(sortType));
