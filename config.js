@@ -95,9 +95,9 @@ function validateForm(title, date, hours, minutes, duration, user) {
  */
 function isDuplicate(event, existingEvents) {
 	for (let e of existingEvents) {
-		e.date = new Date(e.date);
-		e.date.setHours(e.startHours, e.startMinutes);
-		if ((e.date.getTime() === event.date.getTime() || e.title === event.title) && e.user === event.user) {
+		let date = new Date(e.date);
+		date.setHours(e.startHours, e.startMinutes);
+		if ((date.getTime() === event.date.getTime() || e.title === event.title) && e.user === event.user) {
 			return true;
 		}
 	}
@@ -121,6 +121,8 @@ function addEvent(event) {
 			$("#confirmation").toggleClass("duplicate");
 		}, 3000);
 	} else {
+		console.log(event);
+		console.log(JSON.stringify(event));
 		existingEvents.push(event);
 		let jsonString = JSON.stringify(existingEvents);
 		localStorage.events = jsonString;

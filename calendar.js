@@ -86,7 +86,16 @@ const getUserEvents = () => {
 const getEventsByDate = date => {
 	const events = getUserEvents();
 	if (events) {
-		const matchingEvents = events.filter(event => event.date.startsWith(date));
+		const matchingEvents = events.filter(event => {
+			let eventDate = new Date(event.date);
+			let parts = date.split('-');
+			let year = parseInt(parts[0]);
+			let month = parseInt(parts[1]);
+			let day = parseInt(parts[2]);
+			return eventDate.getFullYear() === year &&
+				eventDate.getMonth() + 1 === month &&
+				eventDate.getDate() === day;
+		});
 
 		return matchingEvents;
 	}
