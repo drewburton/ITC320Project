@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits - Your Consulting Company</title>
+    <link rel="stylesheet" type="text/css" href="about.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+</head>
+
+<body>
+    <header>
+        <img src="Images/logo1 (2).png" alt="Company Logo">
+        <a href="index.html"><button type="button">Home</button></a>
+        <h1>Credits</h1>
+    </header>
+
+    <h1>Welcome to the Credits Page of Your Consulting Company's Website.</h1>
+
+    <section class="credits">
+        <h2>Catalyzing Vision, Transforming Strategies — Your Success, Our Expertise.</h2>
+
+        <p>We would like to acknowledge the following:</p>
+
+        <!-- Add your credits here -->
+        <ul>
+            <li>Company Logo: [Credits/Source]</li>
+            <li>Graphics: [Credits/Source]</li>
+            <li>Media: [Credits/Source]</li>
+        </ul>
+
+        <p>Thank you for visiting our website!</p>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.darkMode === "on") {
+                $('body').css("background-color", "#333");
+            }
+        });
+    </script>
+
+    <style>
+        body h1{
+            justify-content: center;
+            justify-items: center;   
+            text-align: center;
+            color: #124772;
+            font-size: larger;
+            left: 10vh;
+        }
+        section {
+            max-width: 800px;
+            margin: 12vh auto;
+            padding: 20px;
+            background-color: #124772;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    </style>
+</body>
+
+</html>
+`

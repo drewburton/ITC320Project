@@ -4,29 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel = "stylesheet" type="text/css" href = "about.css"></link>
+    <link rel="stylesheet" type="text/css" href="about.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body>
     <header>
+        <img src="Images/logo1 (2).png" alt="Company Logo"> 
         <a href="credits.html"><button type="button">Credits</button></a>
+        <a href="index.html"><button type="button">Home</button></a>
         <h1>About Us</h1>
     </header>
 
+    <h1 class = "Company"> Company Name</h1>
+    <section class = "first-section">
+        
+        <div id="companyInfo">
+            
+            <h3>Welcome to our creative web development studio! At XYZ Company, we are passionate about crafting unique and engaging websites tailored to your needs. Our team of skilled professionals combines creativity with technical expertise to bring your ideas to life. <br> <br>Our web development company is dedicated to crafting a dynamic sunrise alarm website, employing a framework to ensure modernity and user engagement. The website offers a seamless experience with day and night mode preferences persisting across sessions.</h3>
+            
+  
+            <img src="Images/logo1 (2).png" alt="Company Logo" class="logo">    
+            
+        </div>
+    </section> 
+   
+    <section>   
+        <div id="MissonandTeam">
+            <h2>Our Mission</h2>
+            <h3>Our mission is to provide users with exceptional websites through a unique value proposition. We are dedicated to upholding core values and constantly strive for excellence. Through innovation and collaboration, we aim to meet the diverse needs of our users, contributing positively to the industry.</h3>
+            </div>
+    </section>
     <section>
-        <h2>Our Mission</h2>
-        <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-
         <h2>Our Team</h2>
-        <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-
         <ul>
             <li>Patrick Seeling - Project Manager</li>
             <li>Andrew Burton - Developer</li>
             <li>Jones Brock - Developer</li>
             <li>Akram Moustafa - Developer</li>
-            <!-- Add more team members as needed -->
         </ul>
     </section>
    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if (sessionStorage.darkMode === "on") {
+                $('body').css("background-color", "#333");
+            }
+        });
+    </script>
 </body>
 </html>

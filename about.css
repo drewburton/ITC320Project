@@ -1,0 +1,56 @@
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #124772;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.Company {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3vh;
+    margin-left: 40%; 
+    margin-right: 40%;
+}
+
+.first-section {
+    margin-top: 12vh;
+}
+#companyInfo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px; 
+    margin-right: 20px;
+}
+
+h3, h2, h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+p {
+    text-size-adjust: 50%;
+    color: white;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    color: white;
+    margin-bottom: 5px;
+}
+
+li:not(:last-child) {
+    margin-bottom: 10px;
+}
+

@@ -49,31 +49,31 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(textInterval);
     }, 3750);
 });
-    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"
+
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"
    
-    // Check if dark mode is stored in session storage on page load
+    
 if (sessionStorage.getItem("darkMode") === "on") {
-  // If dark mode is stored as "on", apply dark mode
+ 
   $("body, header, div").addClass("dark");
   $(".change").text("ON");
 } else {
-  // Otherwise, apply light mode
+  
   $("body, header, div").removeClass("dark");
   $(".change").text("OFF");
 }
 
-// Set up click event handler
 $(".change").on("click", function () {
-  // Toggle dark mode
+  
   if ($("body").hasClass("dark")) {
       $("body, header, div").removeClass("dark");
       $(".change").text("OFF");
-      // Store the state in session storage
+      
       sessionStorage.setItem("darkMode", "off");
   } else {
       $("body, header, div").addClass("dark");
       $(".change").text("ON");
-      // Store the state in session storage
+      
       sessionStorage.setItem("darkMode", "on");
   }
 });
