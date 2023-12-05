@@ -16,7 +16,7 @@ table {
 }
 
 th, td {
-    border: 1px solid black;
+    border: 3px solid #6d6d6d;
 }
 
 body {
@@ -24,12 +24,12 @@ body {
 }
   
 .dark {
-    background-color: #121212;
+    background-color: #6d6d6d;
     color: whitesmoke;
 }
 
 .darkTable {
-    background-color: dimgrey;
+    background-color: #121212;
 }
 
 .lightTable {
@@ -66,4 +66,8 @@ button:hover {
     align-items: center;
     text-align: center;
     min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
 }

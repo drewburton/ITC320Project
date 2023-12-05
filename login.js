@@ -1,3 +1,6 @@
+"use strict";
+
+//Check if dark mode is on. If not, then light mode is enabled.
 const dark = (sessionStorage.getItem("darkMode") == "on");
 
 //Check to see if input matches any of the stored users.
@@ -19,6 +22,7 @@ function loginUser(){
         }
     }
 
+    //Login info does not match any of the stored users.
     $("#username").css("border","red 5px solid");
     $("#password").css("border","red 5px solid");
     $("#username").next().text("Login info is incorrect.");
@@ -29,6 +33,9 @@ function loginUser(){
     return false;
 }
 
+/**
+ * Set dark or light mode for the page.
+ */
 $( document ).ready(function() {
     if(dark) {
         $("body").addClass("dark");

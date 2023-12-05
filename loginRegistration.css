@@ -6,7 +6,7 @@ body {
 }
 
 .dark {
-  background-color: #121212;
+  background-color: #6d6d6d;
   color: whitesmoke;
 }
 
@@ -18,7 +18,7 @@ body {
 .darkInput {
   color: whitesmoke;
   border: 3px whitesmoke solid;
-  background-color: dimgray;
+  background-color: #121212;
 }
 
 .darkButton {

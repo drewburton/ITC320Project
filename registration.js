@@ -3,13 +3,18 @@
  */
 "use strict";
 
+//Figure out if dark mode is enabled. If not, light mode is enabled.
 const dark = (sessionStorage.getItem("darkMode") == "on");
 
+//Array of state codes to be used to validate the state code field
 const stateCodeArr = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI",
     "ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT",
     "NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD",
     "TN","TX","UT","VT","VA","WA","WV","WI","WY"];
 
+/**
+ * User class to be used to store registered users and their information. 
+ */
 class User {
     constructor(username, password){
         this.username = username;
@@ -17,10 +22,20 @@ class User {
     }
 }
 
+/**
+ * Sets the border red for the given HTML element.
+ * 
+ * @param element The HTML element to set the border red for. 
+ */
 function setBorderRed(element){
     element.css("border", "red 4px solid");
 }
 
+/**
+ * Resets the border to the initial color and size for the given HTML element.
+ * 
+ * @param element The HTML element to reset the border of.
+ */
 function resetBorder(element){
     if(dark) {
         element.css("border", "3px whitesmoke solid");
@@ -29,6 +44,12 @@ function resetBorder(element){
     }
 }
 
+/**
+ * Validates a given US state code.
+ * 
+ * @param stateCode The state code field to validate.
+ * @returns true if the state code is valid. False otherwise.
+ */
 function isStateCode(stateCode) {
     for(let usStateCode of stateCodeArr) {
         if(stateCode == usStateCode) {
@@ -39,6 +60,7 @@ function isStateCode(stateCode) {
     return false;
 }
 
+//Validates a given date.
 //Below code copied from Lab 13 for this class. Not my code.
 const isDate = text => {
 	if ( ! /^[01]?\d\/[0-3]\d\/\d{4}$/.test(text) ) { return false; }
@@ -66,6 +88,11 @@ const isDate = text => {
 };
 //Above code copied from Lab 13 for this class. Not my code.
 
+/**
+ * Validates all form fields that need to be validated for the registration form.
+ * 
+ * @returns true if all form fields are valid. False otherwise.
+ */
 function validateForm(){
     let valid = true;
 
@@ -224,8 +251,13 @@ function validateForm(){
     return valid;
 }
 
+/**
+ * Stores the registration results so that they can be displayed in the confirmation page.
+ */
 function storeRegistration() {
     let registrationArr = [];
+    
+    //An array of form field selectors to get values from.
     let selectorArr = ["#date", "#firstName", "#lastName", "#username", "#phoneNumber",
             "#email", "#stateCode", "#zipCode", "input[name='customerType']:checked", "input[name='paymentType']:checked",
             "input[name='student']:checked", "input[name='veteran']:checked", "input[name='senior']:checked"];
@@ -237,6 +269,11 @@ function storeRegistration() {
     sessionStorage.setItem("registrationResults", JSON.stringify(registrationArr));
 }
 
+/**
+ * Stores the user in local storage with the rest of the stored users so that login functionality works.
+ * 
+ * @returns false to cancel the form submission event.
+ */
 function storeUser(){
     //If Form values are valid, store the user.
     if(validateForm()){
@@ -280,9 +317,11 @@ function storeUser(){
         console.log("Preventing form submission");
         return false;
     }
-
 }
 
+/**
+ * Set dark or light mode upon page load.
+ */
 $( document ).ready(function() {
     if(dark) {
         $("body").addClass("dark");

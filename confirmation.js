@@ -3,8 +3,12 @@
  */
 "use strict";
 
+//Check if dark mode is on. If not, then light mode is enabled.
 const dark = (sessionStorage.getItem("darkMode") == "on");
 
+/**
+ * Display the registration results on the confirmation page.
+ */
 function displayResults() {
     let results = JSON.parse(sessionStorage.getItem("registrationResults"));
 
@@ -23,6 +27,9 @@ function displayResults() {
     $("#seniorCitizen").text(results[12] != null);
 }
 
+/**
+ * Set dark or light mode on the page and display results.
+ */
 $( document ).ready(function() {
     if(dark) {
         $("body").addClass("dark");
