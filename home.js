@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const header = document.getElementById('main-header');
 
     const messages = [
-      'Welcome to Your Website<br>',
+      'Welcome to Central Alarms<br>',
       'Discover Exciting Events<br>',
       'Explore the Calendar<br>',
       'Connect with Us' 
