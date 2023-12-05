@@ -13,7 +13,9 @@ function loginUser(){
         console.log(user);
         if(user.username == loginUsername && user.password == loginPassword) {
             sessionStorage.setItem("currentUser", loginUsername);
-            return true;
+            
+            location.href = "loginConfirmation.html";
+            return false; //Prevent form submission so that redirect happens.
         }
     }
 

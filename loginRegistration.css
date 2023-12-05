@@ -83,3 +83,7 @@ button {
   width: 8em;
   height: 3em;
 }
+
+button:hover {
+  cursor:pointer;
+}

@@ -1,0 +1,69 @@
+th {
+    text-align: left;
+    padding-right: 1em;
+    font-size: 35px;
+}
+td {
+    padding-right: 1em;
+    font-size: 23px;
+}
+
+table {
+    border-style: ridge;
+    border-width: 20px;
+    border-color:#124772; 
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+  
+.dark {
+    background-color: #121212;
+    color: whitesmoke;
+}
+
+.darkTable {
+    background-color: dimgrey;
+}
+
+.lightTable {
+    background-color: lightgrey;
+}
+  
+.light {
+    background-color: white;
+    color: black;
+}
+
+button {
+    background-color: #124772;
+    border: 3px whitesmoke solid;
+    color: whitesmoke;
+    border-radius: 1em;
+    width: 8em;
+    height: 3em;
+}
+
+#buttons {
+    padding: 30px;
+    text-align: center;
+}
+
+button:hover {
+    cursor:pointer;
+}
+
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}

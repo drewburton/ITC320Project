@@ -6,13 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Confirmation</title>
-    <!-- <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="confirmation.css">
+    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
   </head>
   <body>
     <main>
-        <h1>Confirmation</h1>  
+        <h1>Registration Confirmation</h1>  
+        <table id="registrationTable">
+          <tr>
+            <th>Field Name</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td id="date"></td>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <td id="firstName"></td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td id="lastName"></td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td id="username"></td>
+          </tr>
+          <tr>
+            <td>Phone Number</td>
+            <td id="phoneNumber"></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td id="email"></td>
+          </tr>
+          <tr>
+            <td>State Code</td>
+            <td id="stateCode"></td>
+          </tr>
+          <tr>
+            <td>Zip Code</td>
+            <td id="zipCode"></td>
+          </tr>
+          <tr>
+            <td>Customer Type</td>
+            <td id="customerType"></td>
+          </tr>
+          <tr>
+            <td>Payment Type</td>
+            <td id="paymentType"></td>
+          </tr>
+          <tr>
+            <td>Student</td>
+            <td id="student"></td>
+          </tr>
+          <tr>
+            <td>Veteran</td>
+            <td id="veteran"></td>
+          </tr>
+          <tr>
+            <td>Senior Citizen</td>
+            <td id="seniorCitizen"></td>
+          </tr>
+        </table>
+
+        <div id="buttons">
+          <h3>Navigate to:</h3>
+          <button id="home" onclick="location.href='index.html'">Home</button>
+          <button id="login" onclick="location.href='login.html'">Login</button>
+        </div>
     </main>
-	<!-- <script src="index.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="confirmation.js"></script>
   </body>
 </html>

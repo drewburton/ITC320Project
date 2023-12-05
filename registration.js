@@ -143,8 +143,16 @@ function validateForm(){
 
     let password = $("#password").val().trim();
     let confirmPassword = $("#confirmPassword").val().trim();
-    //Validate that Password Field matches Confirm Password Field.
-    if(password != confirmPassword) {
+    //Validate Password Fields.
+    if(password == "") {
+        $("#password").next().text("This is a required field.");
+        valid = false;
+        setBorderRed($("#password"));
+    } else if(!password.match(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,40}$"))) {
+        $("#password").next().text("Must be at least 8 characters long, contain at least 1 uppercase and 1 lowercase letter, 1 number, and 1 special character.");
+        valid = false;
+        setBorderRed($("#password"));
+    } else if(password != confirmPassword) {
         $("#password").next().text("The password fields must match.");
         $("#confirmPassword").next().text("The password fields must match.");
         valid = false;
@@ -156,37 +164,17 @@ function validateForm(){
         $("#confirmPassword").next().text("*");
         resetBorder($("#confirmPassword"));
     }
-    
-    //Validate Password Field.
-    if(password == "") {
-        $("#password").next().text("This is a required field.");
-        valid = false;
-        setBorderRed($("#password"));
-    } else if(!password.match(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,40}$"))) {
-        $("#password").next().text("Must be at least 8 characters long, contain at least 1 uppercase and 1 lowercase letter, 1 number, and 1 special character.");
-        valid = false;
-        setBorderRed($("#password"));
-    } else {
-        $("#password").next().text("*");
-        resetBorder($("#password"));
-    }
     $("#password").val(password);
-
-    //Validate Confirm Password Field.
-    if(confirmPassword == "") {
-        $("#confirmPassword").next().text("This is a required field.");
-        valid = false;
-        setBorderRed($("#confirmPassword"));
-    } else {
-        $("#confirmPassword").next().text("*");
-        resetBorder($("#confirmPassword"));
-    }
-    $("#confirmPassword").val(confirmPassword);
+    $("#confirmPassword").val(confirmPassword);    
 
     let email = $("#email").val().trim();
     let confirmEmail = $("#confirmEmail").val().trim();
-    //Validate that Email Field matches Confirm Email Field.
-    if(email != confirmEmail) {
+    //Validate Email Fields.
+    if(email == "") {
+        $("#email").next().text("This is a required field.");
+        valid = false;
+        setBorderRed($("#email"));
+    } else if(email != confirmEmail) {
         $("#email").next().text("The email fields must match.");
         $("#confirmEmail").next().text("The email fields must match.");
         valid = false;
@@ -198,27 +186,7 @@ function validateForm(){
         $("#confirmEmail").next().text("*");
         resetBorder($("#confirmEmail"));
     }
-
-    //Validate Email Field.
-    if(email == "") {
-        $("#email").next().text("This is a required field.");
-        valid = false;
-        setBorderRed($("#email"));
-    } else {
-        $("#email").next().text("*");
-        resetBorder($("#email"));
-    }
     $("#email").val(email);
-
-    //Validate Confirm Email Field.
-    if(confirmEmail == "") {
-        $("#confirmEmail").next().text("This is a required field.");
-        valid = false;
-        setBorderRed($("#confirmEmail"));
-    } else {
-        $("#confirmEmail").next().text("*");
-        resetBorder($("#confirmEmail"));
-    }
     $("#confirmEmail").val(confirmEmail);
 
     //Validate State Code Field.
@@ -258,9 +226,9 @@ function validateForm(){
 
 function storeRegistration() {
     let registrationArr = [];
-    let selectorArr = ["#date", "#firstName", "#lastName", "#username", "#phoneNumber", "#password", "#confirmPassword",
-            "#email", "#confirmEmail", "#stateCode", "#zipCode", "input[name='customerType']:checked", 
-            "input[name='paymentType']:checked", "input[name='student']:checked", "input[name='veteran']:checked", "input[name='senior']:checked"];
+    let selectorArr = ["#date", "#firstName", "#lastName", "#username", "#phoneNumber",
+            "#email", "#stateCode", "#zipCode", "input[name='customerType']:checked", "input[name='paymentType']:checked",
+            "input[name='student']:checked", "input[name='veteran']:checked", "input[name='senior']:checked"];
 
     for(let selector of selectorArr) {
         registrationArr[registrationArr.length] = $(selector).val();
