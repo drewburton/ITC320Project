@@ -118,6 +118,10 @@ function validateForm(){
         $("#firstName").next().text("This is a required field.");
         valid = false;
         setBorderRed($("#firstName"));
+    } else if(!firstName.match(new RegExp("^[a-zA-Z ,.'-]+$"))) {
+        $("#firstName").next().text("Can contain only letters and some special characters (,.'-).");
+        valid = false;
+        setBorderRed($("#firstName"));
     } else {
         $("#firstName").next().text("*");
         resetBorder($("#firstName"));
@@ -128,6 +132,10 @@ function validateForm(){
     let lastName = $("#lastName").val().trim();
     if(lastName == "") {
         $("#lastName").next().text("This is a required field.");
+        valid = false;
+        setBorderRed($("#lastName"));
+    } else if(!lastName.match(new RegExp("^[a-zA-Z,.'-]+$"))) {
+        $("#lastName").next().text("Can contain only letters and some special characters (,.'-).");
         valid = false;
         setBorderRed($("#lastName"));
     } else {
@@ -175,7 +183,7 @@ function validateForm(){
         $("#password").next().text("This is a required field.");
         valid = false;
         setBorderRed($("#password"));
-    } else if(!password.match(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,40}$"))) {
+    } else if(!password.match(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,400}$"))) {
         $("#password").next().text("Must be at least 8 characters long, contain at least 1 uppercase and 1 lowercase letter, 1 number, and 1 special character.");
         valid = false;
         setBorderRed($("#password"));
@@ -270,31 +278,39 @@ function storeRegistration() {
 }
 
 /**
- * Stores the user in local storage with the rest of the stored users so that login functionality works.
+ * Checks if a given username is present in a list of users.
+ * 
+ * @param {String} username The username to check for.
+ * @param {Array<User>} users The list of users to check in.
+ * @returns true if the username is present. False otherwise.
+ */
+function isPresent(username, users){
+    for(let user of users){
+        console.log(user.username);
+        if(user.username == username) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Stores the user in local storage with the rest of the stored 
+ * users so that login functionality works.
  * 
  * @returns false to cancel the form submission event.
  */
 function storeUser(){
     //If Form values are valid, store the user.
     if(validateForm()){
-        console.log("Form is valid, running storeUser()");
         //List of stored users (empty array for first store)
         let users = JSON.parse(localStorage.getItem("users")) || [];
 
         let username = $("#username").val().trim();
         let password = $("#password").val().trim();
 
-        let notPresent = true;
-
-        for(let user of users){
-            console.log(user.username);
-            if(user.username == username) {
-                notPresent = false;
-                break;
-            }
-        }
-
-        if(notPresent) {
+        if(!isPresent(username, users)) {
             let newUser = new User(username, password);
 
             users[users.length] = newUser;
@@ -307,16 +323,14 @@ function storeUser(){
 
             return false; //Prevent form submission so that redirect happens.
         } else {
-            console.log("This username is already registered");
             $("#username").next().text("This username is already registered.");
             setBorderRed($("#username"));
 
             return false;
         }
-    } else {
-        console.log("Preventing form submission");
-        return false;
-    }
+    } 
+
+    return false; //Prevent form submission by default.
 }
 
 /**
