@@ -337,6 +337,8 @@ function storeUser(){
  * Set dark or light mode upon page load.
  */
 $( document ).ready(function() {
+    $("#date").focus();
+
     if(dark) {
         $("body").addClass("dark");
         $("input").addClass("darkInput");
