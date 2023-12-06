@@ -7,17 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
     <link rel="stylesheet" href="./confirmation.css">
-    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./common.css">
   </head>
+  <header>
+    <img src="Images/logo1 (2).png">
+    <h1>Login Confirmation</h1>
+
+    <button onclick="location.href='about.html'" id="about">About</button>
+    <button onclick="location.href='config.html'" id="events">Add Events</button>
+    <button onclick="location.href='calendar.html'" id="calendar">Calendar</button>
+    <button onclick="location.href='index.html'" id="home">Home</button>
+  </header>
   <body>
     <main>
       <div class="center-screen">
-        <h1 id="welcome"></h1>
+        <h2 id="welcome"></h2>
         <span style="text-align: center;">Navigate to: </span>
         <div id="buttons">
-            <button id="home" onclick="location.href='index.html'">Home</button>
-            <button id="config" onclick="location.href='config.html'">Add Events</button>
-            <button id="calendar" onclick="location.href='calendar.html'">Calendar</button>
+            <button class="realButton" id="home" onclick="location.href='index.html'">Home</button>
+            <button class="realButton" id="config" onclick="location.href='config.html'">Add Events</button>
+            <button class="realButton" id="calendar" onclick="location.href='calendar.html'">Calendar</button>
         </div>
       </div>
     </main>

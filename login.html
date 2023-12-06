@@ -7,12 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
     <link rel="stylesheet" href="./loginRegistration.css">
-    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="./common.css">
   </head>
+  <header>
+    <img src="Images/logo1 (2).png">
+    <h1>Login</h1>
+
+    <button onclick="location.href='about.html'" id="about">About</button>
+    <button onclick="location.href='config.html'" id="events">Add Events</button>
+    <button onclick="location.href='calendar.html'" id="calendar">Calendar</button>
+    <button onclick="location.href='index.html'" id="home">Home</button>
+  </header>
   <body>
     <main>
-        <button onclick="location.href='./index.html'">Home</button>
-        <h1 id="pageHeader">Login</h1>
+        <h2 id="pageHeader">Login</h2>
 
         <form id="loginForm" onsubmit="return loginUser()">  
             <p>

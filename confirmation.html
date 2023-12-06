@@ -7,11 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Confirmation</title>
     <link rel="stylesheet" href="confirmation.css">
-    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="common.css">
   </head>
+  <header>
+    <img src="Images/logo1 (2).png">
+    <h1>Registration Confirmation Confirmation</h1>
+
+    <button onclick="location.href='about.html'" id="about">About</button>
+    <button onclick="location.href='config.html'" id="events">Add Events</button>
+    <button onclick="location.href='calendar.html'" id="calendar">Calendar</button>
+    <button onclick="location.href='index.html'" id="home">Home</button>
+  </header>
   <body>
     <main>
-        <h1>Registration Confirmation</h1>  
+        <h2>Registration Confirmation</h2>  
         <table id="registrationTable">
           <tr>
             <th>Field Name</th>
@@ -73,8 +82,8 @@
 
         <div id="buttons">
           <h3>Navigate to:</h3>
-          <button id="home" onclick="location.href='index.html'">Home</button>
-          <button id="login" onclick="location.href='login.html'">Login</button>
+          <button class="realButton" id="home" onclick="location.href='index.html'">Home</button>
+          <button class="realButton" id="login" onclick="location.href='login.html'">Login</button>
         </div>
     </main>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

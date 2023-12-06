@@ -75,14 +75,18 @@ h1 {
   background-color: green;
 }
 
-button {
+#pageHeader {
+  text-align: center;
+}
+
+/* button {
   background-color: darkred;
   border: 3px black solid;
   border-radius: 1em;
-  /* color: lightgray; */
+  color: lightgray;
   width: 8em;
   height: 3em;
-}
+} */
 
 button:hover {
   cursor:pointer;

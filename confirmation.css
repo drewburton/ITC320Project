@@ -41,7 +41,7 @@ body {
     color: black;
 }
 
-button {
+.realButton {
     background-color: #124772;
     border: 3px whitesmoke solid;
     color: whitesmoke;
@@ -68,6 +68,6 @@ button:hover {
     min-height: 100vh;
 }
 
-h1 {
+h2 {
     text-align: center;
 }

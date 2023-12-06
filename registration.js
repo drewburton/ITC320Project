@@ -326,10 +326,8 @@ $( document ).ready(function() {
     if(dark) {
         $("body").addClass("dark");
         $("input").addClass("darkInput");
-        $("button").addClass("darkButton");
     } else {
         $("body").addClass("light");
         $("#submitButton").css("background-color", "limegreen");
-        $("button").css("background-color", "red");
     }
 });
