@@ -273,7 +273,8 @@ const sortEvents = evt => {
 	});
 
 	shouldDisplayEvents = false;
-	hideEvents();
+	$("#display").text("Display");
+	$("ol").empty();
 
 	evt.preventDefault();
 };
