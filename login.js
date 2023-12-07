@@ -37,6 +37,8 @@ function loginUser(){
  * Set dark or light mode for the page.
  */
 $( document ).ready(function() {
+    $("#username").focus();
+
     if(dark) {
         $("body").addClass("dark");
         $("input").addClass("darkInput");

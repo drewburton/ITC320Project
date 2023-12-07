@@ -260,6 +260,28 @@ function validateForm(){
 }
 
 /**
+ * Reset all fields to what they were when the page was originally loaded.
+ */
+function resetFields() {
+    $("#date").val("");
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#username").val("");
+    $("#phoneNumber").val("");
+    $("#password").val("");
+    $("#confirmPassword").val("");
+    $("#email").val("");
+    $("#confirmEmail").val("");
+    $("#stateCode").val("");
+    $("#zipCode").val("");
+    $("#business").prop("checked", true);
+    $("#po").prop("checked", true);
+    $("#student").prop("checked", false);
+    $("#veteran").prop("checked", false);
+    $("#senior").prop("checked", false);
+}
+
+/**
  * Stores the registration results so that they can be displayed in the confirmation page.
  */
 function storeRegistration() {
@@ -337,6 +359,12 @@ function storeUser(){
  * Set dark or light mode upon page load.
  */
 $( document ).ready(function() {
+    $("#date").focus();
+
+    $("#reset").click(() => {
+        resetFields();
+    });
+
     if(dark) {
         $("body").addClass("dark");
         $("input").addClass("darkInput");
