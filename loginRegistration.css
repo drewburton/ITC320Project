@@ -75,6 +75,10 @@ h1 {
   background-color: green;
 }
 
+#reset {
+  background-color: red;
+}
+
 #pageHeader {
   text-align: center;
 }
